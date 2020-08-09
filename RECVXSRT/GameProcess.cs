@@ -55,21 +55,25 @@ namespace RECVXSRT
 
         public void UpdateProduct()
         {
-            int length = 0;
+            int length;
 
             if (Name == Emulators.PCSX2)
                 length = 11;
-            else if (Name == Emulators.RPCS3)
+            else // Emulators.RPCS3
                 length = 9;
 
-            byte[] buffer = MainMemory.GetByteArrayAt(ProductPointer.ToInt64(), length, true);
-            string code = Encoding.UTF8.GetString(buffer);
-
-            if (Product.Code != code)
+            try
             {
-                Product.SetCode(code);
-                UpdatePointers();
+                byte[] buffer = MainMemory.GetByteArrayAt(ProductPointer.ToInt64(), length);
+                string code = Encoding.UTF8.GetString(buffer);
+
+                if (Product.Code != code)
+                {
+                    Product.SetCode(code);
+                    UpdatePointers();
+                }
             }
+            catch { }
         }
 
         public void UpdatePointers()
