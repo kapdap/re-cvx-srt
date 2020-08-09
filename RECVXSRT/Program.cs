@@ -312,7 +312,7 @@ namespace RECVXSRT
                 // 10. Weapons (2 Slot Icon)
                 { ItemEnumeration.M1P, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 13, Program.INV_SLOT_HEIGHT * 10, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
                 { ItemEnumeration.GoldLugers, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 16, Program.INV_SLOT_HEIGHT * 11, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
-                { ItemEnumeration.SubMachineGun, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 15, Program.INV_SLOT_HEIGHT * 10, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
+                { ItemEnumeration.SubMachineGun, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 16, Program.INV_SLOT_HEIGHT * 10, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
                 { ItemEnumeration.AssaultRifle, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 9, Program.INV_SLOT_HEIGHT * 12, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
                 { ItemEnumeration.SniperRifle, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 5, Program.INV_SLOT_HEIGHT * 11, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
                 { ItemEnumeration.LinearLauncher, new System.Drawing.Rectangle(Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT * 12, Program.INV_SLOT_WIDTH * 2, Program.INV_SLOT_HEIGHT) },
