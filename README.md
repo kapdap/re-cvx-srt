@@ -11,14 +11,14 @@ See the [CHANGELOG.md](CHANGELOG.md) file for changes and older release download
 
 ## Features
 
-Implemented:
+### Implemented
 
 * Player health.
 * In-game timer.
 * Inventory display.
 * DirectX overlay.
 
-Planned:
+### Planned
 
 * Equipped weapon.
 * Poisoned status.
@@ -28,7 +28,7 @@ Planned:
 * JSON HTTP Endpoint.
 * Adjust window/overlay transparency.
 
-Known Bugs:
+### Known Bugs
 
 * Inventory icons are from [RE2REmakeSRT](https://github.com/Squirrelies/RE2REmakeSRT). These will be replaced with CVX icons.
 * Overlay will stay visible when the emulator window is closed.
