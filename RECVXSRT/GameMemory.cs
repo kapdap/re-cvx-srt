@@ -11,16 +11,7 @@ namespace RECVXSRT
         public GamePointers Pointers { get; private set; }
         public ProcessMemory.ProcessMemory Memory { get; private set; }
 
-        public int PlayerRoom { get; private set; }
-        public int PlayerCharacter { get; private set; }
-        public int PlayerHealth { get; private set; }
-        public int PlayerMaxHealth { get; private set; }
-        public bool PlayerPoisoned { get; private set; }
-        public bool PlayerSerum { get; private set; }
-        public int PlayerDifficulty { get; private set; }
-        public int PlayerSlot { get; private set; }
-        public InventoryEntry PlayerEquipped { get; private set; }
-        public InventoryEntry[] PlayerInventory { get; private set; }
+        public GamePlayer Player { get; private set; }
         public EnemyEntry[] EnemyEntry { get; private set; }
 
         public int IGTRunningTimer { get; private set; }
@@ -49,18 +40,22 @@ namespace RECVXSRT
             Pointers = game.Pointers;
             Memory = game.MainMemory;
 
+            Player = new GamePlayer();
+
             // Initialize variables to default values.
-            PlayerRoom = 0;
-            PlayerCharacter = 0;
-            PlayerHealth = 0;
-            PlayerMaxHealth = 0;
-            PlayerPoisoned = false;
-            PlayerSerum = false;
-            PlayerDifficulty = 0;
-            PlayerSlot = 0;
-            PlayerEquipped = new InventoryEntry();
-            PlayerInventory = new InventoryEntry[11];
+            Player.Room = 0;
+            Player.Character = 0;
+            Player.Health = 0;
+            Player.MaxHealth = 0;
+            Player.Poisoned = false;
+            Player.Serum = false;
+            Player.Difficulty = 0;
+            Player.Slot = 0;
+            Player.Equipment = new InventoryEntry();
+            Player.Inventory = new InventoryEntry[11];
+
             EnemyEntry = new EnemyEntry[32];
+
             IGTRunningTimer = 0;
         }
 
@@ -81,16 +76,19 @@ namespace RECVXSRT
         {
             RefreshSlim();
 
-            PlayerDifficulty = Memory.GetByteAt(Pointers.Difficulty.ToInt64());
-            PlayerCharacter = Memory.GetByteAt(Pointers.Character.ToInt64());
-            PlayerRoom = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), Game.IsBigEndian);
-            //PlayerPoisoned = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
-            PlayerHealth = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), Game.IsBigEndian);
+            Player.Difficulty = Memory.GetByteAt(Pointers.Difficulty.ToInt64());
+            Player.Character = Memory.GetByteAt(Pointers.Character.ToInt64());
+            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), Game.IsBigEndian);
+            Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), Game.IsBigEndian);
+            //Player.Poisoned = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
+            //Player.Serum = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
+            //Player.Saves = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
+            //Player.Retries = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
 
             if (Game.Product.Country == "JP")
-                PlayerMaxHealth = PlayerDifficulty == 2 ? 400 : 200;
+                Player.MaxHealth = Player.Difficulty == 2 ? 400 : 200;
             else
-                PlayerMaxHealth = 160;
+                Player.MaxHealth = 160;
 
             RefreshInventory();
             //RefreshEnemies();
@@ -100,7 +98,7 @@ namespace RECVXSRT
         {
             int index = -1;
 
-            IntPtr pointer = IntPtr.Add(Pointers.Inventory, PlayerCharacter * 0x40);
+            IntPtr pointer = IntPtr.Add(Pointers.Inventory, Player.Character * 0x40);
 
             for (int i = 0; i < 12; ++i)
             {
@@ -109,14 +107,14 @@ namespace RECVXSRT
 
                 if (i <= 0)
                 {
-                    PlayerSlot = item;
+                    Player.Slot = item;
                     continue;
                 }
 
-                PlayerInventory[++index] = new InventoryEntry(index, BitConverter.GetBytes(item));
+                Player.Inventory[++index] = new InventoryEntry(index, BitConverter.GetBytes(item));
 
-                if (PlayerSlot == (index + 1))
-                    PlayerEquipped = PlayerInventory[index];
+                if (Player.Slot == (index + 1))
+                    Player.Equipment = Player.Inventory[index];
             }
         }
 
@@ -126,10 +124,20 @@ namespace RECVXSRT
 
             for (int i = 0; i < 6; ++i)
             {
-                //int item = Memory.GetIntAt(pointer.ToInt64());
-                pointer = IntPtr.Add(pointer, 0x580);
+                int parent = Memory.GetIntAt(IntPtr.Add(pointer, 0x02EC).ToInt64());
+                int linked = Memory.GetIntAt(IntPtr.Add(pointer, 0x02F4).ToInt64());
+                int type = Memory.GetIntAt(IntPtr.Add(pointer, 0x040C).ToInt64());
+
+                int start = Memory.GetIntAt(pointer.ToInt64());
+                int slot = Memory.GetIntAt(IntPtr.Add(pointer, 0x039C).ToInt64());
+                int status = Memory.GetIntAt(IntPtr.Add(pointer, 0x000C).ToInt64());
+                int spawned = Memory.GetIntAt(IntPtr.Add(pointer, 0x008B).ToInt64());
+                int health = Memory.GetIntAt(IntPtr.Add(pointer, 0x041C).ToInt64());
+                int damage = Memory.GetIntAt(IntPtr.Add(pointer, 0x0475).ToInt64());
 
                 EnemyEntry[i] = new EnemyEntry(0, 0);
+
+                pointer = IntPtr.Add(pointer, 0x580);
             }
         }
 

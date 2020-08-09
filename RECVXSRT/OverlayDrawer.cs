@@ -76,14 +76,14 @@ namespace RECVXSRT
             float fontSize = 26f;
 
             // Draw health.
-            if (Program.gameMemory.PlayerHealth < 0) // Dead?
+            if (Program.gameMemory.Player.Health < 0) // Dead?
                 g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, "DEAD");
-            else if (Program.gameMemory.PlayerHealth >= 120) // Fine (Green)
-                g.DrawText(consolasBold, fontSize, greenBrush, xOffset, yOffset, Program.gameMemory.PlayerHealth.ToString());
-            else if (Program.gameMemory.PlayerHealth <= 119 && Program.gameMemory.PlayerHealth >= 30) // Caution (Yellow)
-                g.DrawText(consolasBold, fontSize, yellowBrush, xOffset, yOffset, Program.gameMemory.PlayerHealth.ToString());
-            else if (Program.gameMemory.PlayerHealth <= 29) // Danger (Red)
-                g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, Program.gameMemory.PlayerHealth.ToString());
+            else if (Program.gameMemory.Player.Health >= 120) // Fine (Green)
+                g.DrawText(consolasBold, fontSize, greenBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            else if (Program.gameMemory.Player.Health <= 119 && Program.gameMemory.Player.Health >= 30) // Caution (Yellow)
+                g.DrawText(consolasBold, fontSize, yellowBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            else if (Program.gameMemory.Player.Health <= 29) // Danger (Red)
+                g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
         }
 
         private void StatisticsDraw(OverlayWindow w, Graphics g, int xOffset, int yOffset)
@@ -124,7 +124,7 @@ namespace RECVXSRT
         {
             int currentSlot = 0;
 
-            foreach (InventoryEntry inv in Program.gameMemory.PlayerInventory)
+            foreach (InventoryEntry inv in Program.gameMemory.Player.Inventory)
             {
                 if (inv != default && inv.SlotPosition == 0 && inv.IsEmptySlot)
                     currentSlot++;

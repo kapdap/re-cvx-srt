@@ -261,34 +261,34 @@ namespace RECVXSRT
 
             // Draw health.
             Font healthFont = new Font("Consolas", 14, FontStyle.Bold);
-            if (Program.gameMemory.PlayerHealth < 0) // Dead?
+            if (Program.gameMemory.Player.Health < 0) // Dead?
             {
                 e.Graphics.DrawString("DEAD", healthFont, Brushes.Red, 15, 37, stdStringFormat);
                 playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.EMPTY, "EMPTY");
             }
-            else if (Program.gameMemory.PlayerHealth >= 120) // Fine (Green)
+            else if (Program.gameMemory.Player.Health >= 120) // Fine (Green)
             {
-                e.Graphics.DrawString(Program.gameMemory.PlayerHealth.ToString(), healthFont, Brushes.LawnGreen, 15, 37, stdStringFormat);
+                e.Graphics.DrawString(Program.gameMemory.Player.Health.ToString(), healthFont, Brushes.LawnGreen, 15, 37, stdStringFormat);
 
-                if (!Program.gameMemory.PlayerPoisoned)
+                if (!Program.gameMemory.Player.Poisoned)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.FINE, "FINE");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
             }
-            else if (Program.gameMemory.PlayerHealth <= 119 && Program.gameMemory.PlayerHealth >= 30) // Caution (Yellow)
+            else if (Program.gameMemory.Player.Health <= 119 && Program.gameMemory.Player.Health >= 30) // Caution (Yellow)
             {
-                e.Graphics.DrawString(Program.gameMemory.PlayerHealth.ToString(), healthFont, Brushes.Goldenrod, 15, 37, stdStringFormat);
+                e.Graphics.DrawString(Program.gameMemory.Player.Health.ToString(), healthFont, Brushes.Goldenrod, 15, 37, stdStringFormat);
 
-                if (!Program.gameMemory.PlayerPoisoned)
+                if (!Program.gameMemory.Player.Poisoned)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.CAUTION_YELLOW, "CAUTION_YELLOW");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
             }
-            else if (Program.gameMemory.PlayerHealth <= 29) // Danger (Red)
+            else if (Program.gameMemory.Player.Health <= 29) // Danger (Red)
             {
-                e.Graphics.DrawString(Program.gameMemory.PlayerHealth.ToString(), healthFont, Brushes.Red, 15, 37, stdStringFormat);
+                e.Graphics.DrawString(Program.gameMemory.Player.Health.ToString(), healthFont, Brushes.Red, 15, 37, stdStringFormat);
 
-                if (!Program.gameMemory.PlayerPoisoned)
+                if (!Program.gameMemory.Player.Poisoned)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.DANGER, "DANGER");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
@@ -308,7 +308,7 @@ namespace RECVXSRT
                 e.Graphics.PixelOffsetMode = pixelOffsetMode;
                 e.Graphics.TextRenderingHint = textRenderingHint;
 
-                foreach (InventoryEntry inv in Program.gameMemory.PlayerInventory)
+                foreach (InventoryEntry inv in Program.gameMemory.Player.Inventory)
                 {
                     if (inv != default && inv.SlotPosition == 0 && inv.IsEmptySlot)
                         currentSlot++;
@@ -345,6 +345,8 @@ namespace RECVXSRT
                     }
 
                     e.Graphics.FillRectangle(imageBrush, imageX, imageY, imageBrush.Image.Width, imageBrush.Image.Height);
+
+                    // TODO: Colors for different ammo types (Red = Flame, Green = B.O.W., Yellow = Acid, Blue = Normal).
                     e.Graphics.DrawString(!inv.Infinite ? inv.Quantity.ToString() : "∞", new Font("Consolas", 14, FontStyle.Bold), textBrush, textX, textY, invStringFormat);
                 }
             }

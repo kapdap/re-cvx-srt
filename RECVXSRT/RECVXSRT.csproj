@@ -258,6 +258,7 @@
     <Compile Include="GameProduct.cs" />
     <Compile Include="IDXOverlay.cs" />
     <Compile Include="InventoryEntry.cs" />
+    <Compile Include="EnemyEnumeration.cs" />
     <Compile Include="JSONServer.cs" />
     <Compile Include="JSONServerStartup.cs" />
     <Compile Include="MainUI.cs">
@@ -278,6 +279,7 @@
     </Compile>
     <Compile Include="OverlayDrawer.cs" />
     <Compile Include="PInvoke.cs" />
+    <Compile Include="GamePlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Emulators.cs" />
     <Compile Include="ProgramFlags.cs" />

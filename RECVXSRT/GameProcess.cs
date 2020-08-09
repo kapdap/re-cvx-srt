@@ -80,7 +80,7 @@ namespace RECVXSRT
         {
             switch (Product.Code)
             {
-                case GameProduct.SLPM_65022:
+                case RECVXSRT.GameProduct.SLPM_65022:
                     Pointers.Time = IntPtr.Add(GamePointer, 0x004314A0);
                     Pointers.Room = IntPtr.Add(GamePointer, 0x004314B4);
                     Pointers.Serum = IntPtr.Add(GamePointer, 0x00000000); // TODO
@@ -92,7 +92,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00430C8C);
                     break;
 
-                case GameProduct.SLUS_20184:
+                case RECVXSRT.GameProduct.SLUS_20184:
                     Pointers.Time = IntPtr.Add(GamePointer, 0x004339A0);
                     Pointers.Room = IntPtr.Add(GamePointer, 0x004339B4);
                     Pointers.Serum = IntPtr.Add(GamePointer, 0x00000000); // TODO
@@ -104,7 +104,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x0043318C);
                     break;
 
-                case GameProduct.SLES_50306:
+                case RECVXSRT.GameProduct.SLES_50306:
                     Pointers.Time = IntPtr.Add(GamePointer, 0x0044A1D0);
                     Pointers.Room = IntPtr.Add(GamePointer, 0x0044A1E4);
                     Pointers.Serum = IntPtr.Add(GamePointer, 0x00000000); // TODO
@@ -116,7 +116,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x004499BC);
                     break;
 
-                case GameProduct.NPUB30467:
+                case RECVXSRT.GameProduct.NPUB30467:
                     Pointers.Time = IntPtr.Add(GamePointer, 0x00BB3DB8);
                     Pointers.Room = IntPtr.Add(GamePointer, 0x00BB3DCC);
                     Pointers.Serum = IntPtr.Add(GamePointer, 0x00000000); // TODO
@@ -128,7 +128,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB36A4); // TODO
                     break;
 
-                case GameProduct.NPEB00553:
+                case RECVXSRT.GameProduct.NPEB00553:
                     Pointers.Time = IntPtr.Add(GamePointer, 0x00BC40B8);
                     Pointers.Room = IntPtr.Add(GamePointer, 0x00BC40CC);
                     Pointers.Serum = IntPtr.Add(GamePointer, 0x00000000); // TODO
