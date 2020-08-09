@@ -157,6 +157,8 @@ namespace RECVXSRT
                     Debug.WriteLine("PID: {0}", p.Id);
 
                 mainProcess = processes[0];
+
+                return;
             }
         }
 
