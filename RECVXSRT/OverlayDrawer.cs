@@ -126,6 +126,9 @@ namespace RECVXSRT
 
             foreach (InventoryEntry inv in Program.gameMemory.PlayerInventory)
             {
+                if (inv != default && inv.SlotPosition == 0 && inv.IsEmptySlot)
+                    currentSlot++;
+
                 if (inv == default || inv.SlotPosition < 0 || inv.SlotPosition > 11 || inv.IsEmptySlot)
                     continue;
 
