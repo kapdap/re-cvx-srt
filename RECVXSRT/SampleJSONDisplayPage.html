@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RE: CVX SRT JSON Display Page</title>
+    <script>
+        // USER CONFIGURABLE VARIABLES.
+        const JSON_ADDRESS = '127.0.0.1'; // IP OR HOSTNAME OF THE COMPUTER RUNNING THE SRT. USEFUL FOR MULTIPLE PC STREAMING SETUPS.
+        const JSON_PORT = 7190; // PORT OF THE JSON ENDPOINT. NOT LIKELY TO CHANGE UNLESS YOU COMPILED THE SRT YOURSELF FROM SOURCE CODE.
+        const POLLING_RATE = 333; // THE TIME IN MILLISECONDS WE'LL REQUEST UPDATED VALUES.
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: Arial;
+        }
+
+        a {
+            color: #FFFFFF;
+        }
+
+            a:link {
+                text-decoration: none;
+            }
+
+            a:visited {
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            a:active {
+                text-decoration: underline;
+            }
+
+        td {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="srtQueryData"></div>
+    <script>
+        const JSON_ENDPOINT = `http://${JSON_ADDRESS}:${JSON_PORT}/`;
+
+        window.onload = function () {
+            getData();
+            setInterval(getData, POLLING_RATE);
+        }
+
+        var Asc = function (a, b) {
+            if (a > b) return +1;
+            if (a < b) return -1;
+            return 0;
+        }
+
+        var Desc = function (a, b) {
+            if (a > b) return -1;
+            if (a < b) return +1;
+            return 0;
+        }
+
+        function getData() {
+            fetch(JSON_ENDPOINT)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    appendData(data);
+                })
+                .catch(function (err) {
+                    console.log('Error: ' + err);
+                });
+        }
+
+        function appendData(data) {
+            var mainContainer = document.getElementById("srtQueryData");
+            mainContainer.innerHTML = "";
+
+            if (data.PlayerPoisoned)
+                mainContainer.innerHTML += '<font size="6" color="#7851a9"><b>' + data.PlayerCurrentHealth + '</b></font><br>'; // Toxic
+            else if (data.PlayerCurrentHealth <= 120)
+                mainContainer.innerHTML += '<font size="6" color="#7cfc00"><b>' + data.PlayerCurrentHealth + '</b></font><br>'; // aFineBoi
+            else if (data.PlayerCurrentHealth <= 119 && data.PlayerCurrentHealth >= 30)
+                mainContainer.innerHTML += '<font size="6" color="#daa520"><b>' + data.PlayerCurrentHealth + '</b></font><br>'; // Caution!
+            else if (data.PlayerCurrentHealth <= 29 && data.PlayerCurrentHealth >= 0)
+                mainContainer.innerHTML += '<font size="6" color="#ff0000"><b>' + data.PlayerCurrentHealth + '</b></font><br>'; // Dangerops!
+            else
+                mainContainer.innerHTML += '<font size="6" color="#ff0000"><b>' + data.PlayerCurrentHealth + '</b></font><br>'; // Deaded.
+            
+            mainContainer.innerHTML += '<font size="6"><b>' + data.IGTFormattedString + '</b></font><br>';
+            //mainContainer.innerHTML += '<br>';
+
+            mainContainer.innerHTML += '<font size="4" color="#ff0000"><b>Enemy&nbsp;HP</b></font><br>';
+            var table = document.createElement("table");
+            data.EnemyHealth.sort(function (a, b) { return Asc(a.Percentage, b.Percentage) || Desc(a.CurrentHP, b.CurrentHP) }).forEach(function (item, index, arr) {
+                if (item.IsAlive) {
+                    table.innerHTML += `<tr>
+<td><font size="4" color="#ff0000"><b>${item.CurrentHP}</b></font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><font size="4" color="#ff0000"><b>${parseFloat(item.Percentage * 100).toFixed(1)}%</b></font></td>
+</tr>`;
+                }
+            });
+            mainContainer.appendChild(table);
+
+            //mainContainer.innerHTML += '<BR>Last Updated: ' + new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>
