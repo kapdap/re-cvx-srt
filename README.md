@@ -3,7 +3,7 @@ A SRT (SpeedRun Tool) for Resident Evil: Code: Veronica that works with PCSX2 an
 
 ## Download
 
-[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.0.9.0/re-cvx-srt_v0.0.9.0.zip) to download the latest release ***v0.0.9.0***.
+[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.0.9.1/re-cvx-srt_v0.0.9.1.zip) to download the latest release ***v0.0.9.1***.
 
 ## Changes
 
