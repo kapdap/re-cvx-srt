@@ -47,8 +47,9 @@ namespace RECVXSRT
             Player.Character = 0;
             Player.Health = 0;
             Player.MaxHealth = 0;
+            Player.Status = 0x00;
             Player.Poisoned = false;
-            Player.Serum = false;
+            Player.Gassed = false;
             Player.Difficulty = 0;
             Player.Slot = 0;
             Player.Equipment = new InventoryEntry();
@@ -80,10 +81,11 @@ namespace RECVXSRT
             Player.Character = Memory.GetByteAt(Pointers.Character.ToInt64());
             Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), Game.IsBigEndian);
             Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), Game.IsBigEndian);
-            //Player.Poisoned = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
-            //Player.Serum = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
-            //Player.Saves = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
-            //Player.Retries = Memory.GetByteAt(Pointers.Poison.ToInt64()) == 0x01;
+            Player.Status = Memory.GetByteAt(Pointers.Status.ToInt64());
+            Player.Poisoned = (Player.Status & 0x08) != 0;
+            Player.Gassed = (Player.Status & 0x20) != 0;
+            Player.Saves = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Saves.ToInt64()), Game.IsBigEndian);
+            Player.Retries = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Retries.ToInt64()), Game.IsBigEndian);
 
             if (Game.Product.Country == "JP")
                 Player.MaxHealth = Player.Difficulty == 2 ? 400 : 200;
