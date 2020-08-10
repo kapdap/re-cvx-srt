@@ -28,13 +28,16 @@ namespace RECVXSRT
         // Accessor properties.
         public ItemEnumeration ItemID => (ItemEnumeration)Data[2];
         public int Quantity => BitConverter.ToInt16(Data, 0);
-        public bool Infinite => Data[3] >= 8;
+        public bool Infinite => (Data[3] & (byte)ItemStatusEnumeration.Infinate) != 0;
+        public bool IsFlame => (Data[3] & (byte)ItemStatusEnumeration.Flame) != 0;
+        public bool IsGas => (Data[3] & (byte)ItemStatusEnumeration.Acid) != 0;
+        public bool IsBOW => (Data[3] & (byte)ItemStatusEnumeration.BOW) != 0;
         public bool IsEmptySlot => ItemID == ItemEnumeration.None;
 
         public InventoryEntry(int slotPosition, byte[] data)
         {
-            this.SlotPosition = slotPosition;
-            this.Data = data;
+            SlotPosition = slotPosition;
+            Data = data;
         }
 
         public bool Equals(InventoryEntry other)
@@ -45,7 +48,7 @@ namespace RECVXSRT
         public override bool Equals(object obj)
         {
             if (obj is InventoryEntry)
-                return this.Equals((InventoryEntry)obj);
+                return Equals((InventoryEntry)obj);
             else
                 return base.Equals(obj);
         }
