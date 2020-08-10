@@ -21,6 +21,10 @@ namespace RECVXSRT
         private static SolidBrush blackBrush = null;
         private static SolidBrush greenBrush = null;
         private static SolidBrush yellowBrush = null;
+        private static SolidBrush purpleBrush = null;
+        private static SolidBrush violetBrush = null;
+        private static SolidBrush goldBrush = null;
+        private static SolidBrush goldenRodBrush = null;
 
         private static SolidBrush backBrush = null;
         private static SolidBrush foreBrush = null;
@@ -38,6 +42,10 @@ namespace RECVXSRT
                 whiteBrush = g.CreateSolidBrush(255, 255, 255);
                 greyBrush = g.CreateSolidBrush(150, 150, 150);
                 blackBrush = g.CreateSolidBrush(0, 0, 0);
+                purpleBrush = g.CreateSolidBrush(128, 0, 128);
+                violetBrush = g.CreateSolidBrush(238, 130, 238);
+                goldBrush = g.CreateSolidBrush(255, 215, 0);
+                goldenRodBrush = g.CreateSolidBrush(218, 165, 32);
 
                 backBrush = g.CreateSolidBrush(60, 60, 60);
                 foreBrush = g.CreateSolidBrush(100, 0, 0);
@@ -76,14 +84,44 @@ namespace RECVXSRT
             float fontSize = 26f;
 
             // Draw health.
-            if (Program.gameMemory.Player.Health < 0) // Dead?
+            if (Program.gameMemory.Player.Health < 0) // Dead
                 g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, "DEAD");
-            else if (Program.gameMemory.Player.Health >= 120) // Fine (Green)
-                g.DrawText(consolasBold, fontSize, greenBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
-            else if (Program.gameMemory.Player.Health <= 119 && Program.gameMemory.Player.Health >= 30) // Caution (Yellow)
-                g.DrawText(consolasBold, fontSize, yellowBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
-            else if (Program.gameMemory.Player.Health <= 29) // Danger (Red)
-                g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            else if (Program.gameMemory.Player.Health < 30) // Caution (Orange)
+            {
+                if (Program.gameMemory.Player.Gassed)
+                    g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else if (Program.gameMemory.Player.Poisoned)
+                    g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else
+                    g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            }
+            else if (Program.gameMemory.Player.Health < 60) // Caution (Yellow)
+            {
+                if (Program.gameMemory.Player.Gassed)
+                    g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else if (Program.gameMemory.Player.Poisoned)
+                    g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else
+                    g.DrawText(consolasBold, fontSize, goldBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            }
+            else if (Program.gameMemory.Player.Health < 120) // Danger (Red)
+            {
+                if (Program.gameMemory.Player.Gassed)
+                    g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else if (Program.gameMemory.Player.Poisoned)
+                    g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else
+                    g.DrawText(consolasBold, fontSize, goldenRodBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            }
+            else // Fine (Green)
+            {
+                if (Program.gameMemory.Player.Gassed)
+                    g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else if (Program.gameMemory.Player.Poisoned)
+                    g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+                else
+                    g.DrawText(consolasBold, fontSize, greenBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
+            }
         }
 
         private void StatisticsDraw(OverlayWindow w, Graphics g, int xOffset, int yOffset)
