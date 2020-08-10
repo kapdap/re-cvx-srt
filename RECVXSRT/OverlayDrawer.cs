@@ -143,6 +143,18 @@ namespace RECVXSRT
                 ++i;
             }
 
+            string status = "Normal";
+
+            if (Program.gameMemory.Player.Gassed)
+                status = "Gassed";
+            else if (Program.gameMemory.Player.Poisoned)
+                status = "Poisoned";
+
+            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Status: " + status);
+            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Retries: " + Program.gameMemory.Player.Retries);
+            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Saves: " + Program.gameMemory.Player.Saves);
+            ++i;
+
             if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoEnemyHealth))
             {
                 g.DrawText(consolasBold, 16f, redBrush, xOffset + 0, yOffset + (heightGap * ++i), "Enemy HP");

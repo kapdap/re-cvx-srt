@@ -397,8 +397,20 @@ namespace RECVXSRT
             {
                 e.Graphics.DrawString("T:" + Program.gameMemory.IGTRunningTimer.ToString("0000000000"), new Font("Consolas", 9, FontStyle.Bold), Brushes.Gray, 0, 25, stdStringFormat);
                 e.Graphics.DrawString("C:" + Program.gameProcess.Product.Code, new Font("Consolas", 9, FontStyle.Bold), Brushes.Gray, 0, 38, stdStringFormat);
-                heightOffset = 25; // Adding an additional offset to accomdate Raw IGT.
+                heightOffset = 30; // Adding an additional offset to accomdate Raw IGT.
             }
+
+            string status = "Normal";
+
+            if (Program.gameMemory.Player.Gassed)
+                status = "Gassed";
+            else if (Program.gameMemory.Player.Poisoned)
+                status = "Poisoned";
+
+            e.Graphics.DrawString("Status: " + status, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 25, stdStringFormat);
+            e.Graphics.DrawString("Retries: " + Program.gameMemory.Player.Retries, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 51, stdStringFormat);
+            e.Graphics.DrawString("Saves: " + Program.gameMemory.Player.Saves, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 38, stdStringFormat);
+            heightOffset += 39;
 
             e.Graphics.DrawString("Enemy HP", new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, 0, heightOffset + (heightGap * ++i), stdStringFormat);
             foreach (EnemyEntry enemyHP in Program.gameMemory.EnemyEntry.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP))
