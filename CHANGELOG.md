@@ -12,7 +12,7 @@ To extract .zip archives, use [7-Zip](https://www.7-zip.org/)!
 ## [0.1.0.0 Beta](https://github.com/kapdap/re-cvx-srt/releases/download/0.1.0.0/re-cvx-srt_v0.1.0.0.zip) (2020-08-11)
 * Replaced temporary inventory icons with Resident Evil: Code: Veronica icons
 
-## [0.0.9.2 Alpha] (Unreleased)
+## 0.0.9.2 Alpha (Unreleased)
 * Detect Poisoned status.
 * Detect Gassed status (When poisoned by Nosferatus gas attack).
 * Added text display for poisoned and gassed statuses.
