@@ -122,6 +122,9 @@ namespace RECVXSRT
                 if (Player.Slot == (index + 1))
                     Player.Equipment = Player.Inventory[index];
             }
+
+            if (Player.Slot <= 0)
+                Player.Equipment = new InventoryEntry();
         }
 
         public void RefreshEnemies()
