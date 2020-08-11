@@ -3,7 +3,7 @@ A SRT (SpeedRun Tool) for Resident Evil: Code: Veronica that works with PCSX2 an
 
 ## Download
 
-[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.0.9.1/re-cvx-srt_v0.0.9.1.zip) to download the latest release ***v0.0.9.1***.
+[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.1.0.0/re-cvx-srt_v0.1.0.0.zip) to download the latest release ***v0.1.0.0***.
 
 ## Changes
 
@@ -14,23 +14,23 @@ See the [CHANGELOG.md](CHANGELOG.md) file for changes and older release download
 ### Implemented
 
 * Player health.
+* Poison status.
+* Gassed status (When Poisoned by Nosferatus gas attack).
 * In-game timer.
+* Retires used.
+* Saves used.
 * Inventory display.
 * DirectX overlay.
 
 ### Planned
 
 * Equipped weapon.
-* Poisoned status.
 * Enemy health.
-* Retires used.
-* Saves used.
 * JSON HTTP Endpoint.
 * Adjust window/overlay transparency.
 
 ### Known Bugs
 
-* Inventory icons are from [RE2REmakeSRT](https://github.com/Squirrelies/RE2REmakeSRT). These will be replaced with CVX icons.
 * Overlay will stay visible when the emulator window is closed.
 
 ## Support
