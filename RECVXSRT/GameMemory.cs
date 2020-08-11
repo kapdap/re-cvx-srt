@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace RECVXSRT
@@ -7,9 +8,11 @@ namespace RECVXSRT
     {
         private const string IGT_TIMESPAN_STRING_FORMAT = @"hh\:mm\:ss";
 
-        public GameProcess Game { get; private set; }
-        public GamePointers Pointers { get; private set; }
+        public bool IsBigEndian { get; private set; }
         public ProcessMemory.ProcessMemory Memory { get; private set; }
+
+        public GamePointers Pointers { get; private set; }
+        public GameProduct Product { get; private set; }
 
         public GamePlayer Player { get; private set; }
         public EnemyEntry[] EnemyEntry { get; private set; }
@@ -36,9 +39,10 @@ namespace RECVXSRT
 
         public GameMemory(GameProcess game)
         {
-            Game = game;
-            Pointers = game.Pointers;
+            IsBigEndian = game.IsBigEndian;
             Memory = game.MainMemory;
+            Pointers = game.Pointers;
+            Product = game.Product;
 
             Player = new GamePlayer();
 
@@ -66,7 +70,7 @@ namespace RECVXSRT
         /// <param name="cToken"></param>
         public void RefreshSlim()
         {
-            IGTRunningTimer = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Time.ToInt64()), Game.IsBigEndian);
+            IGTRunningTimer = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Time.ToInt64()), IsBigEndian);
         }
 
         /// <summary>
@@ -79,15 +83,15 @@ namespace RECVXSRT
 
             Player.Difficulty = Memory.GetByteAt(Pointers.Difficulty.ToInt64());
             Player.Character = Memory.GetByteAt(Pointers.Character.ToInt64());
-            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), Game.IsBigEndian);
-            Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), Game.IsBigEndian);
+            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), IsBigEndian);
+            Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), IsBigEndian);
             Player.Status = Memory.GetByteAt(Pointers.Status.ToInt64());
             Player.Poison = (Player.Status & 0x08) != 0;
             Player.Gassed = (Player.Status & 0x20) != 0;
-            Player.Saves = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Saves.ToInt64()), Game.IsBigEndian);
-            Player.Retries = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Retries.ToInt64()), Game.IsBigEndian);
+            Player.Saves = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Saves.ToInt64()), IsBigEndian);
+            Player.Retries = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Retries.ToInt64()), IsBigEndian);
 
-            if (Game.Product.Country == "JP")
+            if (Product.Country == "JP")
                 Player.MaxHealth = Player.Difficulty == 2 ? 400 : 200;
             else
                 Player.MaxHealth = 160;
@@ -104,7 +108,7 @@ namespace RECVXSRT
 
             for (int i = 0; i < 12; ++i)
             {
-                int item = ByteHelper.SwapBytes(Memory.GetIntAt(pointer.ToInt64()), Game.IsBigEndian);
+                int item = ByteHelper.SwapBytes(Memory.GetIntAt(pointer.ToInt64()), IsBigEndian);
                 pointer = IntPtr.Add(pointer, 0x4);
 
                 if (i <= 0)
