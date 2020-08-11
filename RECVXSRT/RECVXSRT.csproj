@@ -259,6 +259,7 @@
     <Compile Include="IDXOverlay.cs" />
     <Compile Include="InventoryEntry.cs" />
     <Compile Include="EnemyEnumeration.cs" />
+    <Compile Include="ItemStatusEnumeration.cs" />
     <Compile Include="JSONServer.cs" />
     <Compile Include="JSONServerStartup.cs" />
     <Compile Include="MainUI.cs">

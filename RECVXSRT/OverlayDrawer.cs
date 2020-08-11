@@ -90,7 +90,7 @@ namespace RECVXSRT
             {
                 if (Program.gameMemory.Player.Gassed)
                     g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
-                else if (Program.gameMemory.Player.Poisoned)
+                else if (Program.gameMemory.Player.Poison)
                     g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
                 else
                     g.DrawText(consolasBold, fontSize, redBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
@@ -99,7 +99,7 @@ namespace RECVXSRT
             {
                 if (Program.gameMemory.Player.Gassed)
                     g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
-                else if (Program.gameMemory.Player.Poisoned)
+                else if (Program.gameMemory.Player.Poison)
                     g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
                 else
                     g.DrawText(consolasBold, fontSize, goldBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
@@ -108,7 +108,7 @@ namespace RECVXSRT
             {
                 if (Program.gameMemory.Player.Gassed)
                     g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
-                else if (Program.gameMemory.Player.Poisoned)
+                else if (Program.gameMemory.Player.Poison)
                     g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
                 else
                     g.DrawText(consolasBold, fontSize, goldenRodBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
@@ -117,7 +117,7 @@ namespace RECVXSRT
             {
                 if (Program.gameMemory.Player.Gassed)
                     g.DrawText(consolasBold, fontSize, purpleBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
-                else if (Program.gameMemory.Player.Poisoned)
+                else if (Program.gameMemory.Player.Poison)
                     g.DrawText(consolasBold, fontSize, violetBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
                 else
                     g.DrawText(consolasBold, fontSize, greenBrush, xOffset, yOffset, Program.gameMemory.Player.Health.ToString());
@@ -147,8 +147,8 @@ namespace RECVXSRT
 
             if (Program.gameMemory.Player.Gassed)
                 status = "Gassed";
-            else if (Program.gameMemory.Player.Poisoned)
-                status = "Poisoned";
+            else if (Program.gameMemory.Player.Poison)
+                status = "Poison";
 
             g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Status: " + status);
             g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Retries: " + Program.gameMemory.Player.Retries);

@@ -259,14 +259,6 @@ namespace RECVXSRT
             e.Graphics.PixelOffsetMode = pixelOffsetMode;
             e.Graphics.TextRenderingHint = textRenderingHint;
 
-
-            Brush brush = null;
-
-            if (Program.gameMemory.Player.Gassed)
-                brush = Brushes.Purple;
-            else if (Program.gameMemory.Player.Poisoned)
-                brush = Brushes.Violet;
-
             // Draw health.
             Font healthFont = new Font("Consolas", 14, FontStyle.Bold);
 
@@ -278,11 +270,18 @@ namespace RECVXSRT
                 return;
             }
 
+            Brush brush = null;
+
+            if (Program.gameMemory.Player.Gassed)
+                brush = Brushes.Purple;
+            else if (Program.gameMemory.Player.Poison)
+                brush = Brushes.Violet;
+
             if (Program.gameMemory.Player.Health < 30) // Danger (Red)
             {
                 if (brush == null) brush = Brushes.Red;
 
-                if (Program.gameMemory.Player.Poisoned || Program.gameMemory.Player.Gassed)
+                if (Program.gameMemory.Player.Poison || Program.gameMemory.Player.Gassed)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.DANGER, "DANGER");
@@ -291,7 +290,7 @@ namespace RECVXSRT
             {
                 if (brush == null) brush = Brushes.Gold;
 
-                if (Program.gameMemory.Player.Poisoned || Program.gameMemory.Player.Gassed)
+                if (Program.gameMemory.Player.Poison || Program.gameMemory.Player.Gassed)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.CAUTION_YELLOW, "CAUTION_YELLOW"); // TODO: Orange image
@@ -300,7 +299,7 @@ namespace RECVXSRT
             {
                 if (brush == null) brush = Brushes.Goldenrod;
 
-                if (Program.gameMemory.Player.Poisoned || Program.gameMemory.Player.Gassed)
+                if (Program.gameMemory.Player.Poison || Program.gameMemory.Player.Gassed)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.CAUTION_YELLOW, "CAUTION_YELLOW");
@@ -309,7 +308,7 @@ namespace RECVXSRT
             {
                 if (brush == null) brush = Brushes.LawnGreen;
 
-                if (Program.gameMemory.Player.Poisoned || Program.gameMemory.Player.Gassed)
+                if (Program.gameMemory.Player.Poison || Program.gameMemory.Player.Gassed)
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.FINE, "FINE");
@@ -404,8 +403,8 @@ namespace RECVXSRT
 
             if (Program.gameMemory.Player.Gassed)
                 status = "Gassed";
-            else if (Program.gameMemory.Player.Poisoned)
-                status = "Poisoned";
+            else if (Program.gameMemory.Player.Poison)
+                status = "Poison";
 
             e.Graphics.DrawString("Status: " + status, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 25, stdStringFormat);
             e.Graphics.DrawString("Retries: " + Program.gameMemory.Player.Retries, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 51, stdStringFormat);

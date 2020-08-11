@@ -5,7 +5,7 @@
         public int Character;
         public int Health;
         public int MaxHealth;
-        public bool Poisoned;
+        public bool Poison;
         public bool Gassed;
         public int Retries;
         public int Saves;

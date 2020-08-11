@@ -48,7 +48,7 @@ namespace RECVXSRT
             Player.Health = 0;
             Player.MaxHealth = 0;
             Player.Status = 0x00;
-            Player.Poisoned = false;
+            Player.Poison = false;
             Player.Gassed = false;
             Player.Difficulty = 0;
             Player.Slot = 0;
@@ -82,7 +82,7 @@ namespace RECVXSRT
             Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), Game.IsBigEndian);
             Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), Game.IsBigEndian);
             Player.Status = Memory.GetByteAt(Pointers.Status.ToInt64());
-            Player.Poisoned = (Player.Status & 0x08) != 0;
+            Player.Poison = (Player.Status & 0x08) != 0;
             Player.Gassed = (Player.Status & 0x20) != 0;
             Player.Saves = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Saves.ToInt64()), Game.IsBigEndian);
             Player.Retries = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Retries.ToInt64()), Game.IsBigEndian);
