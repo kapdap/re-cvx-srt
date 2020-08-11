@@ -128,8 +128,8 @@ namespace RECVXSRT
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00BB3788);
                     Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB36A4);
-                    Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB359B);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3DC3);
+                    Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3598);
+                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3DC2);
                     break;
 
                 case GameProduct.NPEB00553:
@@ -141,8 +141,8 @@ namespace RECVXSRT
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00BC3A88);
                     Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BC38A4);
-                    Pointers.Saves = IntPtr.Add(GamePointer, 0x00BC389B);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BC40C3);
+                    Pointers.Saves = IntPtr.Add(GamePointer, 0x00BC3898);
+                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BC40C2);
                     break;
 
                 default: // GameProduct.NPJB00135
@@ -154,8 +154,8 @@ namespace RECVXSRT
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00BB3808);
                     Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB3624);
-                    Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB361B);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3E43);
+                    Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3618);
+                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3E42);
                     break;
             }
         }
