@@ -77,7 +77,7 @@ namespace RECVXSRT
 
             Player.Difficulty = Memory.GetByteAt(Pointers.Difficulty.ToInt64());
             Player.Character = Memory.GetByteAt(Pointers.Character.ToInt64());
-            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64()), IsBigEndian);
+            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64())); // Note: Room bytes are always swapped!
             Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), IsBigEndian);
             Player.Status = Memory.GetByteAt(Pointers.Status.ToInt64());
             Player.Poison = (Player.Status & 0x08) != 0;
