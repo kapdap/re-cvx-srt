@@ -151,8 +151,8 @@ namespace RECVXSRT
                 status = "Poison";
 
             g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Status: " + status);
-            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Retries: " + Program.gameMemory.Player.Retries);
             g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Saves: " + Program.gameMemory.Player.Saves);
+            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Retries: " + Program.gameMemory.Player.Retries);
             ++i;
 
             if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoEnemyHealth))
