@@ -5,9 +5,6 @@ namespace RECVXSRT
     [DebuggerDisplay("{_DebuggerDisplay,nq}")]
     public struct EnemyEntry
     {
-        /// <summary>
-        /// Debugger display message.
-        /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         public string _DebuggerDisplay
         {
@@ -30,7 +27,7 @@ namespace RECVXSRT
             MaximumHP = maximumHP;
             CurrentHP = (currentHP <= maximumHP) ? currentHP : 0;
             IsAlive = true;
-            Percentage = (IsAlive) ? (float)CurrentHP / (float)MaximumHP : 0f;
+            Percentage = (IsAlive && CurrentHP != 0) ? (float)CurrentHP / (float)MaximumHP : 0f;
         }
     }
 }

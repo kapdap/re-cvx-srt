@@ -11,7 +11,8 @@ namespace RECVXSRT
         public IntPtr Character { get; set; }
         public IntPtr Inventory { get; set; }
         public IntPtr Difficulty { get; set; }
-        public IntPtr Enemies { get; set; }
+        public IntPtr Enemy { get; set; }
+        public IntPtr EnemyCount { get; set; }
         public IntPtr Saves { get; set; }
         public IntPtr Retries { get; set; }
     }

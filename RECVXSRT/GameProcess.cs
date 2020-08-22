@@ -87,7 +87,8 @@ namespace RECVXSRT
                     Pointers.Health = IntPtr.Add(GamePointer, 0x004301FC);
                     Pointers.Character = IntPtr.Add(GamePointer, 0x00430C84);
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00430E70);
-                    Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
+                    Pointers.Enemy = IntPtr.Add(GamePointer, 0x00403DE0);
+                    Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x0124CD88);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00430C8C);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00430C80);
                     Pointers.Retries = IntPtr.Add(GamePointer, 0x004314AA);
@@ -100,7 +101,8 @@ namespace RECVXSRT
                     Pointers.Health = IntPtr.Add(GamePointer, 0x004326FC);
                     Pointers.Character = IntPtr.Add(GamePointer, 0x00433184);
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00433370);
-                    Pointers.Enemies = IntPtr.Add(GamePointer, 0x004062E0);
+                    Pointers.Enemy = IntPtr.Add(GamePointer, 0x004062E0);
+                    Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x012503C8);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x0043318C);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00433180);
                     Pointers.Retries = IntPtr.Add(GamePointer, 0x004339AA);
@@ -113,7 +115,8 @@ namespace RECVXSRT
                     Pointers.Health = IntPtr.Add(GamePointer, 0x00448F2C);
                     Pointers.Character = IntPtr.Add(GamePointer, 0x004499B4);
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00449BA0);
-                    Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
+                    Pointers.Enemy = IntPtr.Add(GamePointer, 0x0041CB10);
+                    Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x01270688);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x004499BC);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x004499B0);
                     Pointers.Retries = IntPtr.Add(GamePointer, 0x0044A1DA);
@@ -126,7 +129,8 @@ namespace RECVXSRT
                     Pointers.Health = IntPtr.Add(GamePointer, 0x00BDEA1C);
                     Pointers.Character = IntPtr.Add(GamePointer, 0x00BB359C);
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00BB3788);
-                    Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
+                    Pointers.Enemy = IntPtr.Add(GamePointer, 0x00BDEB78);
+                    Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x00BDE298);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB36A4);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3598);
                     Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3DC2);
@@ -139,7 +143,8 @@ namespace RECVXSRT
                     Pointers.Health = IntPtr.Add(GamePointer, 0x00BEED1C);
                     Pointers.Character = IntPtr.Add(GamePointer, 0x00BC389C);
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00BC3A88);
-                    Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
+                    Pointers.Enemy = IntPtr.Add(GamePointer, 0x00BEEE78);
+                    Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x00BEE598);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BC38A4);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BC3898);
                     Pointers.Retries = IntPtr.Add(GamePointer, 0x00BC40C2);
@@ -152,7 +157,8 @@ namespace RECVXSRT
                     Pointers.Health = IntPtr.Add(GamePointer, 0x00BDEA9C);
                     Pointers.Character = IntPtr.Add(GamePointer, 0x00BB361C);
                     Pointers.Inventory = IntPtr.Add(GamePointer, 0x00BB3808);
-                    Pointers.Enemies = IntPtr.Add(GamePointer, 0x00000000); // TODO
+                    Pointers.Enemy = IntPtr.Add(GamePointer, 0x00BDEBF8);
+                    Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x00BDE318);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB3624);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3618);
                     Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3E42);
@@ -165,6 +171,8 @@ namespace RECVXSRT
             List<IntPtr> windowHandles = WindowHelper.EnumerateProcessWindowHandles(PID);
             foreach (IntPtr windowHandle in windowHandles)
             {
+                // TODO: Let user change window title filter
+
                 // https://forums.pcsx2.net/Thread-can-someone-help-PCSX2-s-ClassName
                 // How to return the PCSX2 game window handle (Post #4)
                 // 1. Find all parent window handles having the "wxWindowClassNR" class name.

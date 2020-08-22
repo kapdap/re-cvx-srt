@@ -16,6 +16,7 @@ namespace RECVXSRT
 
         public GamePlayer Player { get; private set; }
         public EnemyEntry[] EnemyEntry { get; private set; }
+        public int EnemyEntrySize { get; private set; }
 
         public int IGTRunningTimer { get; private set; }
         public int IGTCalculated => IGTRunningTimer / 60;
@@ -59,24 +60,17 @@ namespace RECVXSRT
             Player.Equipment = new InventoryEntry();
             Player.Inventory = new InventoryEntry[11];
 
-            EnemyEntry = new EnemyEntry[32];
+            EnemyEntry = new EnemyEntry[10];
+            EnemyEntrySize = Product.System == "PS2" ? 0x580 : 0x578;
 
             IGTRunningTimer = 0;
         }
 
-        /// <summary>
-        /// This call refreshes important variables such as IGT.
-        /// </summary>
-        /// <param name="cToken"></param>
         public void RefreshSlim()
         {
             IGTRunningTimer = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Time.ToInt64()), IsBigEndian);
         }
 
-        /// <summary>
-        /// This call refreshes everything. This should be used less often. Inventory rendering can be more expensive and doesn't change as often.
-        /// </summary>
-        /// <param name="cToken"></param>
         public void Refresh()
         {
             RefreshSlim();
