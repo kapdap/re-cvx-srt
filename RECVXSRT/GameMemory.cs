@@ -112,12 +112,11 @@ namespace RECVXSRT
                 }
 
                 Player.Inventory[++index] = new InventoryEntry(index, BitConverter.GetBytes(item));
-
-                if (Player.Slot == (index + 1))
-                    Player.Equipment = Player.Inventory[index];
             }
 
-            if (Player.Slot <= 0)
+            if (Player.Slot > 0)
+                Player.Equipment = Player.Inventory[Player.Slot + 1];
+            else
                 Player.Equipment = new InventoryEntry();
         }
 
