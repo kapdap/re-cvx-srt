@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace RECVXSRT
 {
@@ -19,15 +20,17 @@ namespace RECVXSRT
 
         public int MaximumHP { get; private set; }
         public int CurrentHP { get; private set; }
+        public int DisplayHP => Math.Max(CurrentHP, 0);
+        public bool HasMaxHP { get; private set; }
         public bool IsAlive { get; private set; }
-        public float Percentage { get; private set; }
+        public float Percentage => (IsAlive && DisplayHP != 0) ? (float)DisplayHP / (float)MaximumHP : 0f;
 
-        public EnemyEntry(int maximumHP, int currentHP)
+        public EnemyEntry(int maximumHP, int currentHP, bool hasMaxHP = true)
         {
             MaximumHP = maximumHP;
             CurrentHP = (currentHP <= maximumHP) ? currentHP : 0;
+            HasMaxHP = hasMaxHP;
             IsAlive = true;
-            Percentage = (IsAlive && CurrentHP != 0) ? (float)CurrentHP / (float)MaximumHP : 0f;
         }
     }
 }
