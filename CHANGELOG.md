@@ -7,7 +7,10 @@ Prerequisites:
 
 To extract .zip archives, use [7-Zip](https://www.7-zip.org/)!
 
-### [Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.1.0.1/re-cvx-srt_v0.1.0.1.zip) to download the latest release.
+### [Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.0.0/re-cvx-srt_v0.2.0.0.zip) to download the latest release.
+
+## [0.2.0.0 Beta](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.0.0/re-cvx-srt_v0.2.0.0.zip) (2020-08-23)
+* Added Enemy health.
 
 ## [0.1.0.1 Beta](https://github.com/kapdap/re-cvx-srt/releases/download/0.1.0.1/re-cvx-srt_v0.1.0.1.zip) (2020-08-11)
 * Fixed crash in JSON Server
