@@ -23,7 +23,7 @@ namespace RECVXSRT
         public int DisplayHP => Math.Max(CurrentHP, 0);
         public bool HasMaxHP { get; private set; }
         public bool IsAlive { get; private set; }
-        public float Percentage => (IsAlive && DisplayHP != 0) ? (float)DisplayHP / (float)MaximumHP : 0f;
+        public float Percentage => (IsAlive && DisplayHP > 0) ? (float)DisplayHP / (float)MaximumHP : 0f;
 
         public EnemyEntry(int maximumHP, int currentHP, bool hasMaxHP = true)
         {
