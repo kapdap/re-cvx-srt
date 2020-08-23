@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 
 namespace RECVXSRT
@@ -94,7 +93,7 @@ namespace RECVXSRT
                 Player.MaxHealth = 160;
 
             RefreshInventory();
-            //RefreshEnemies();
+            RefreshEnemies();
         }
 
         public void RefreshInventory()
@@ -125,24 +124,94 @@ namespace RECVXSRT
 
         public void RefreshEnemies()
         {
-            IntPtr pointer = new IntPtr(Pointers.Enemies.ToInt64());
-
-            for (int i = 0; i < 6; ++i)
+            if (!IsRoomLoaded)
             {
-                int parent = Memory.GetIntAt(IntPtr.Add(pointer, 0x02EC).ToInt64());
-                int linked = Memory.GetIntAt(IntPtr.Add(pointer, 0x02F4).ToInt64());
-                int type = Memory.GetIntAt(IntPtr.Add(pointer, 0x040C).ToInt64());
+                EnemyEntry = new EnemyEntry[0];
+                return;
+            }
 
-                int start = Memory.GetIntAt(pointer.ToInt64());
-                int slot = Memory.GetIntAt(IntPtr.Add(pointer, 0x039C).ToInt64());
-                int status = Memory.GetIntAt(IntPtr.Add(pointer, 0x000C).ToInt64());
-                int spawned = Memory.GetIntAt(IntPtr.Add(pointer, 0x008B).ToInt64());
-                int health = Memory.GetIntAt(IntPtr.Add(pointer, 0x041C).ToInt64());
-                int damage = Memory.GetIntAt(IntPtr.Add(pointer, 0x0475).ToInt64());
+            IntPtr pointer = new IntPtr(Pointers.Enemy.ToInt64());
 
-                EnemyEntry[i] = new EnemyEntry(0, 0);
+            int count = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.EnemyCount.ToInt64()), IsBigEndian);
+            int index = -1;
 
-                pointer = IntPtr.Add(pointer, 0x580);
+            EnemyEntry = new EnemyEntry[count];
+            EnemyEntrySize = Product.System == "PS2" ? 0x580 : 0x578;
+
+            for (int i = 0; i < count; ++i)
+            {
+                short type = ByteHelper.SwapBytes(Memory.GetShortAt(IntPtr.Add(pointer, 0x0004).ToInt64()), IsBigEndian);
+                byte action = Memory.GetByteAt(IntPtr.Add(pointer, 0x000C).ToInt64());
+                byte status = Memory.GetByteAt(IntPtr.Add(pointer, 0x000F).ToInt64());
+                int health = ByteHelper.SwapBytes(Memory.GetIntAt(IntPtr.Add(pointer, 0x041C).ToInt64()), IsBigEndian);
+
+                pointer = IntPtr.Add(pointer, EnemyEntrySize);
+
+                if (!Enum.IsDefined(typeof(EnemyEnumeration), (EnemyEnumeration)type)
+                    || action <= 0 || action >= 4)
+                    continue;
+
+                switch ((EnemyEnumeration)type)
+                {
+                    case EnemyEnumeration.GlupWorm:
+                        if (status > 0)
+                            EnemyEntry[++index] = new EnemyEntry(300, health);
+                        break;
+
+                    case EnemyEnumeration.AnatomistZombie:
+                        if (status > 0)
+                            EnemyEntry[++index] = new EnemyEntry(200, health);
+                        break;
+
+                    case EnemyEnumeration.Tyrant:
+                        if (health >= 0 && Player.Room == 0x0501)
+                            EnemyEntry[++index] = new EnemyEntry(700, health);
+                        else if (health >= 0)
+                            EnemyEntry[++index] = new EnemyEntry(500, health);
+                        break;
+
+                    case EnemyEnumeration.AlbinoidAdult:
+                        if (status > 0)
+                            EnemyEntry[++index] = new EnemyEntry(250, health);
+                        break;
+
+                    case EnemyEnumeration.GiantBlackWidow:
+                        if (status > 0)
+                            EnemyEntry[++index] = new EnemyEntry(250, health);
+                        break;
+
+                    case EnemyEnumeration.MutatedSteve:
+                        if (status > 0)
+                            EnemyEntry[++index] = new EnemyEntry(250, health);
+                        break;
+
+                    case EnemyEnumeration.Nosferatu:
+                        EnemyEntry[++index] = new EnemyEntry(600, health);
+                        break;
+
+                    case EnemyEnumeration.AlexiaAshford:
+                        if (Player.Room != 0x091E)
+                            EnemyEntry[++index] = new EnemyEntry(300, health);
+                        break;
+
+                    case EnemyEnumeration.AlexiaAshfordB:
+                        EnemyEntry[++index] = new EnemyEntry(700, health);
+                        break;
+
+                    case EnemyEnumeration.AlexiaAshfordC:
+                        EnemyEntry[++index] = new EnemyEntry(400, health);
+                        break;
+
+                    case EnemyEnumeration.Tenticle:
+                        if (Player.Room != 0x091E)
+                            EnemyEntry[++index] = new EnemyEntry(health, health, false);
+                        break;
+
+                    default:
+                        if (status > 0)
+                            EnemyEntry[++index] = new EnemyEntry(health, health, false);
+                        break;
+                }
             }
         }
 
