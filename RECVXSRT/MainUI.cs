@@ -303,7 +303,7 @@ namespace RECVXSRT
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.POISON, "POISON");
                 else
                     playerHealthStatus.ThreadSafeSetHealthImage(Properties.Resources.CAUTION_YELLOW, "CAUTION_YELLOW");
-            } 
+            }
             else // Fine (Green)
             {
                 if (brush == null) brush = Brushes.LawnGreen;
@@ -407,8 +407,8 @@ namespace RECVXSRT
                 status = "Poison";
 
             e.Graphics.DrawString("Status: " + status, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 25, stdStringFormat);
-            e.Graphics.DrawString("Retries: " + Program.gameMemory.Player.Retries, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 51, stdStringFormat);
             e.Graphics.DrawString("Saves: " + Program.gameMemory.Player.Saves, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 38, stdStringFormat);
+            e.Graphics.DrawString("Retry: " + Program.gameMemory.Player.Retry, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 51, stdStringFormat);
             heightOffset += 39;
 
             e.Graphics.DrawString("Enemy HP", new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, 0, heightOffset + (heightGap * ++i), stdStringFormat);

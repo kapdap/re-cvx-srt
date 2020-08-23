@@ -7,7 +7,7 @@
         public int MaxHealth { get; set; }
         public bool Poison { get; set; }
         public bool Gassed { get; set; }
-        public int Retries { get; set; }
+        public int Retry { get; set; }
         public int Saves { get; set; }
         public int Room { get; set; }
         public int Slot { get; set; }

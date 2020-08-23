@@ -77,13 +77,13 @@ namespace RECVXSRT
 
             Player.Difficulty = Memory.GetByteAt(Pointers.Difficulty.ToInt64());
             Player.Character = Memory.GetByteAt(Pointers.Character.ToInt64());
-            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64())); // Note: Room bytes are always swapped!
             Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), IsBigEndian);
             Player.Status = Memory.GetByteAt(Pointers.Status.ToInt64());
             Player.Poison = (Player.Status & 0x08) != 0;
             Player.Gassed = (Player.Status & 0x20) != 0;
             Player.Saves = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Saves.ToInt64()), IsBigEndian);
-            Player.Retries = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Retries.ToInt64()), IsBigEndian);
+            Player.Retry = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Retry.ToInt64()), IsBigEndian);
+            Player.Room = ByteHelper.SwapBytes(Memory.GetShortAt(Pointers.Room.ToInt64())); // Note: Room bytes are always swapped!
 
             if (Product.Country == "JP")
                 Player.MaxHealth = Player.Difficulty == 2 ? 400 : 200;

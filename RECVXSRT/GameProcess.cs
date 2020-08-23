@@ -91,7 +91,7 @@ namespace RECVXSRT
                     Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x0124CD88);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00430C8C);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00430C80);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x004314AA);
+                    Pointers.Retry = IntPtr.Add(GamePointer, 0x004314AA);
                     break;
 
                 case GameProduct.SLUS_20184:
@@ -105,7 +105,7 @@ namespace RECVXSRT
                     Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x012503C8);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x0043318C);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00433180);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x004339AA);
+                    Pointers.Retry = IntPtr.Add(GamePointer, 0x004339AA);
                     break;
 
                 case GameProduct.SLES_50306:
@@ -119,7 +119,7 @@ namespace RECVXSRT
                     Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x01270688);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x004499BC);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x004499B0);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x0044A1DA);
+                    Pointers.Retry = IntPtr.Add(GamePointer, 0x0044A1DA);
                     break;
 
                 case GameProduct.NPUB30467:
@@ -133,7 +133,7 @@ namespace RECVXSRT
                     Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x00BDE298);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB36A4);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3598);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3DC2);
+                    Pointers.Retry = IntPtr.Add(GamePointer, 0x00BB3DC2);
                     break;
 
                 case GameProduct.NPEB00553:
@@ -147,7 +147,7 @@ namespace RECVXSRT
                     Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x00BEE598);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BC38A4);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BC3898);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BC40C2);
+                    Pointers.Retry = IntPtr.Add(GamePointer, 0x00BC40C2);
                     break;
 
                 default: // GameProduct.NPJB00135
@@ -161,7 +161,7 @@ namespace RECVXSRT
                     Pointers.EnemyCount = IntPtr.Add(GamePointer, 0x00BDE318);
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB3624);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3618);
-                    Pointers.Retries = IntPtr.Add(GamePointer, 0x00BB3E42);
+                    Pointers.Retry = IntPtr.Add(GamePointer, 0x00BB3E42);
                     break;
             }
         }

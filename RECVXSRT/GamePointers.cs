@@ -14,6 +14,6 @@ namespace RECVXSRT
         public IntPtr Enemy { get; set; }
         public IntPtr EnemyCount { get; set; }
         public IntPtr Saves { get; set; }
-        public IntPtr Retries { get; set; }
+        public IntPtr Retry { get; set; }
     }
 }

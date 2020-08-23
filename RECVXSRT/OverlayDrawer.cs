@@ -134,10 +134,10 @@ namespace RECVXSRT
             // IGT Display.
             g.DrawText(consolasBold, 20f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), string.Format("{0}", Program.gameMemory.IGTFormattedString));
             yOffset += 5;
+            ++i;
 
             if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.Debug))
             {
-                ++i;
                 g.DrawText(consolasBold, 16f, greyBrush, xOffset + 0, yOffset + (heightGap * ++i), "T:" + Program.gameMemory.IGTRunningTimer.ToString("0000000000"));
                 g.DrawText(consolasBold, 16f, greyBrush, xOffset + 0, yOffset + (heightGap * ++i), "C:" + Program.gameProcess.Product.Code);
                 ++i;
@@ -152,7 +152,7 @@ namespace RECVXSRT
 
             g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Status: " + status);
             g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Saves: " + Program.gameMemory.Player.Saves);
-            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Retries: " + Program.gameMemory.Player.Retries);
+            g.DrawText(consolasBold, 16f, whiteBrush, xOffset + 0, yOffset + (heightGap * ++i), "Retry: " + Program.gameMemory.Player.Retry);
             ++i;
 
             if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoEnemyHealth))
