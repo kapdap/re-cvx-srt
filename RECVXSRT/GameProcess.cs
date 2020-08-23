@@ -92,6 +92,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00430C8C);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00430C80);
                     Pointers.Retry = IntPtr.Add(GamePointer, 0x004314AA);
+                    Pointers.RDXHeader = IntPtr.Add(GamePointer, 0x0124CC80);
                     break;
 
                 case GameProduct.SLUS_20184:
@@ -106,6 +107,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x0043318C);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00433180);
                     Pointers.Retry = IntPtr.Add(GamePointer, 0x004339AA);
+                    Pointers.RDXHeader = IntPtr.Add(GamePointer, 0x012502C0);
                     break;
 
                 case GameProduct.SLES_50306:
@@ -120,6 +122,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x004499BC);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x004499B0);
                     Pointers.Retry = IntPtr.Add(GamePointer, 0x0044A1DA);
+                    Pointers.RDXHeader = IntPtr.Add(GamePointer, 0x01270580);
                     break;
 
                 case GameProduct.NPUB30467:
@@ -134,6 +137,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB36A4);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3598);
                     Pointers.Retry = IntPtr.Add(GamePointer, 0x00BB3DC2);
+                    Pointers.RDXHeader = IntPtr.Add(GamePointer, 0x00BDE0EC);
                     break;
 
                 case GameProduct.NPEB00553:
@@ -148,6 +152,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BC38A4);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BC3898);
                     Pointers.Retry = IntPtr.Add(GamePointer, 0x00BC40C2);
+                    Pointers.RDXHeader = IntPtr.Add(GamePointer, 0x00BEE3EC);
                     break;
 
                 default: // GameProduct.NPJB00135
@@ -162,6 +167,7 @@ namespace RECVXSRT
                     Pointers.Difficulty = IntPtr.Add(GamePointer, 0x00BB3624);
                     Pointers.Saves = IntPtr.Add(GamePointer, 0x00BB3618);
                     Pointers.Retry = IntPtr.Add(GamePointer, 0x00BB3E42);
+                    Pointers.RDXHeader = IntPtr.Add(GamePointer, 0x00BDE16C);
                     break;
             }
         }

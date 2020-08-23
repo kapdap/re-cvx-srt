@@ -17,6 +17,7 @@ namespace RECVXSRT
         public GamePlayer Player { get; private set; }
         public EnemyEntry[] EnemyEntry { get; private set; }
         public int EnemyEntrySize { get; private set; }
+        public bool IsRoomLoaded { get; private set; }
 
         public int IGTRunningTimer { get; private set; }
         public int IGTCalculated => IGTRunningTimer / 60;
@@ -60,14 +61,16 @@ namespace RECVXSRT
             Player.Equipment = new InventoryEntry();
             Player.Inventory = new InventoryEntry[11];
 
-            EnemyEntry = new EnemyEntry[10];
-            EnemyEntrySize = Product.System == "PS2" ? 0x580 : 0x578;
+            EnemyEntry = new EnemyEntry[0];
 
             IGTRunningTimer = 0;
         }
 
         public void RefreshSlim()
         {
+            int magic = Product.System == "PS2" ? 0x00002041 : 0x0003D650;
+
+            IsRoomLoaded = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.RDXHeader.ToInt64())) == magic;
             IGTRunningTimer = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Time.ToInt64()), IsBigEndian);
         }
 
