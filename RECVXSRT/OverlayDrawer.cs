@@ -164,8 +164,12 @@ namespace RECVXSRT
                     int x = xOffset + 0;
                     int y = yOffset + (heightGap * ++i);
 
-                    DrawProgressBarDirectX(w, g, backBrush, foreBrush, x, y, 158, heightGap, enemyHP.Percentage * 100f, 100f);
-                    g.DrawText(consolasBold, 12f, redBrush, x + 5, y, string.Format("{0} {1:P1}", enemyHP.CurrentHP, enemyHP.Percentage));
+                    DrawProgressBarDirectX(w, g, backBrush, foreBrush, x, y, 120, heightGap, enemyHP.Percentage * 100f, 100f);
+
+                    if (enemyHP.HasMaxHP)
+                        g.DrawText(consolasBold, 12f, redBrush, x + 5, y, string.Format("{0} {1:P1}", enemyHP.DisplayHP, enemyHP.Percentage));
+                    else
+                        g.DrawText(consolasBold, 12f, redBrush, x + 5, y, string.Format("{0}", enemyHP.DisplayHP));
                 }
             }
         }

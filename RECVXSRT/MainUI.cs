@@ -418,7 +418,11 @@ namespace RECVXSRT
                 int y = heightOffset + (heightGap * ++i);
 
                 DrawProgressBarGDI(e, backBrushGDI, foreBrushGDI, x, y, 146, heightGap, enemyHP.Percentage * 100f, 100f);
-                e.Graphics.DrawString(string.Format("{0} {1:P1}", enemyHP.CurrentHP, enemyHP.Percentage), new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
+
+                if (enemyHP.HasMaxHP)
+                    e.Graphics.DrawString(string.Format("{0} {1:P1}", enemyHP.DisplayHP, enemyHP.Percentage), new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
+                else
+                    e.Graphics.DrawString(string.Format("{0}", enemyHP.DisplayHP), new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
             }
         }
 
