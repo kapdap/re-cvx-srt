@@ -3,7 +3,7 @@ A SRT (SpeedRun Tool) for Resident Evil: Code: Veronica that works with PCSX2 an
 
 ## Download
 
-[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.0.0/re-cvx-srt_v0.2.0.0.zip) to download the latest release ***v0.2.0.0***.
+[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.1.0/re-cvx-srt_v0.2.1.0.zip) to download the latest release ***v0.2.1.0***.
 
 ## Changes
 
@@ -32,7 +32,6 @@ See the [CHANGELOG.md](CHANGELOG.md) file for changes and older release download
 ### Known Bugs
 
 * Overlay will stay visible when the emulator window is closed.
-* Tentacle health will re-display when returning to a room where it was killed.
 
 ## Support
 The following emulators and game releases are currently supported.
