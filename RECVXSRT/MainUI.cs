@@ -1,5 +1,6 @@
 ﻿using DoubleBuffered;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -412,17 +413,25 @@ namespace RECVXSRT
             heightOffset += 39;
 
             e.Graphics.DrawString("Enemy HP", new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, 0, heightOffset + (heightGap * ++i), stdStringFormat);
-            foreach (EnemyEntry enemyHP in Program.gameMemory.EnemyEntry.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP))
+
+            List<EnemyEntry> enemyList = Program.gameMemory.EnemyEntry;
+
+            if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
+                enemyList = enemyList.OrderBy(a => a.Slot).ToList();
+            else
+                enemyList = enemyList.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP).ToList();
+
+            foreach (EnemyEntry enemy in enemyList)
             {
                 int x = 0;
                 int y = heightOffset + (heightGap * ++i);
 
-                DrawProgressBarGDI(e, backBrushGDI, foreBrushGDI, x, y, 146, heightGap, enemyHP.Percentage * 100f, 100f);
+                DrawProgressBarGDI(e, backBrushGDI, foreBrushGDI, x, y, 146, heightGap, enemy.Percentage * 100f, 100f);
 
-                if (enemyHP.HasMaxHP)
-                    e.Graphics.DrawString(string.Format("{0} {1:P1}", enemyHP.DisplayHP, enemyHP.Percentage), new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
+                if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
+                    e.Graphics.DrawString(enemy.DebugMessage, new Font("Consolas", 8, FontStyle.Regular), Brushes.Red, x, y + 1, stdStringFormat);
                 else
-                    e.Graphics.DrawString(string.Format("{0}", enemyHP.DisplayHP), new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
+                    e.Graphics.DrawString(enemy.HealthMessage, new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
             }
         }
 

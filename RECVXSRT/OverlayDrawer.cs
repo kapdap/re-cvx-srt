@@ -1,6 +1,7 @@
 ﻿using GameOverlay.Drawing;
 using GameOverlay.Windows;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -157,19 +158,26 @@ namespace RECVXSRT
 
             if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoEnemyHealth))
             {
+                List<EnemyEntry> enemyList = Program.gameMemory.EnemyEntry;
+
+                if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
+                    enemyList = enemyList.OrderBy(a => a.Slot).ToList();
+                else
+                    enemyList = enemyList.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP).ToList();
+
                 g.DrawText(consolasBold, 16f, redBrush, xOffset + 0, yOffset + (heightGap * ++i), "Enemy HP");
                 yOffset += 6;
-                foreach (EnemyEntry enemyHP in Program.gameMemory.EnemyEntry.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP))
+                foreach (EnemyEntry enemy in enemyList)
                 {
                     int x = xOffset + 0;
                     int y = yOffset + (heightGap * ++i);
 
-                    DrawProgressBarDirectX(w, g, backBrush, foreBrush, x, y, 120, heightGap, enemyHP.Percentage * 100f, 100f);
+                    DrawProgressBarDirectX(w, g, backBrush, foreBrush, x, y, 120, heightGap, enemy.Percentage * 100f, 100f);
 
-                    if (enemyHP.HasMaxHP)
-                        g.DrawText(consolasBold, 12f, redBrush, x + 5, y, string.Format("{0} {1:P1}", enemyHP.DisplayHP, enemyHP.Percentage));
+                    if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
+                        g.DrawText(consolasBold, 8f, redBrush, x + 2, y + 2, enemy.DebugMessage);
                     else
-                        g.DrawText(consolasBold, 12f, redBrush, x + 5, y, string.Format("{0}", enemyHP.DisplayHP));
+                        g.DrawText(consolasBold, 12f, redBrush, x + 5, y, enemy.HealthMessage);
                 }
             }
         }
