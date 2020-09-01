@@ -120,9 +120,10 @@ namespace RECVXSRT
 
         public void RefreshInventory()
         {
-            int index = -1;
+            Player.Inventory = new InventoryEntry[12];
 
             IntPtr pointer = IntPtr.Add(Pointers.Inventory, (int)Player.Character * 0x40);
+            int index = 0;
 
             for (int i = 0; i < 12; ++i)
             {
@@ -130,18 +131,15 @@ namespace RECVXSRT
                 pointer = IntPtr.Add(pointer, 0x4);
 
                 if (i <= 0)
-                {
                     Player.Slot = item;
-                    continue;
+                else
+                {
+                    Player.Inventory[++index] = new InventoryEntry(index, BitConverter.GetBytes(item), Player.Slot == index);
+
+                    if (Player.Slot == index)
+                        Player.Inventory[0] = new InventoryEntry(0, BitConverter.GetBytes(item));
                 }
-
-                Player.Inventory[++index] = new InventoryEntry(index, BitConverter.GetBytes(item));
             }
-
-            if (Player.Slot > 0)
-                Player.Equipment = Player.Inventory[Player.Slot + 1];
-            else
-                Player.Equipment = new InventoryEntry();
         }
 
         public void RefreshEnemies()

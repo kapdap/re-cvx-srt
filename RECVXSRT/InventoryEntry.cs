@@ -33,8 +33,9 @@ namespace RECVXSRT
         public bool IsGas { get; private set; }
         public bool IsBOW { get; private set; }
         public bool IsEmptySlot => ItemID == ItemEnumeration.None;
+        public bool IsEquipped { get; private set; }
 
-        public InventoryEntry(int slotPosition, byte[] data)
+        public InventoryEntry(int slotPosition, byte[] data, bool isEquipped = false)
         {
             SlotPosition = slotPosition;
             Data = data;
@@ -46,6 +47,8 @@ namespace RECVXSRT
             IsFlame = (Data[3] & (byte)ItemStatusEnumeration.Flame) != 0;
             IsGas = (Data[3] & (byte)ItemStatusEnumeration.Acid) != 0;
             IsBOW = (Data[3] & (byte)ItemStatusEnumeration.BOW) != 0;
+
+            IsEquipped = isEquipped;
         }
 
         public bool Equals(InventoryEntry other)
