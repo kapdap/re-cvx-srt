@@ -207,6 +207,12 @@ namespace RECVXSRT
 
                 if (inv.Quantity == 0)
                     textBrush = darkRedBrush;
+                else if (inv.IsGas)
+                    textBrush = yellowBrush;
+                else if (inv.IsBOW)
+                    textBrush = greenBrush;
+                else if (inv.IsFlame)
+                    textBrush = redBrush;
 
                 System.Drawing.Rectangle r;
                 SharpDX.Direct2D1.Bitmap b;

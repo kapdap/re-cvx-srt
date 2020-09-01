@@ -352,6 +352,12 @@ namespace RECVXSRT
 
                     if (inv.Quantity == 0)
                         textBrush = Brushes.DarkRed;
+                    else if (inv.IsGas)
+                        textBrush = Brushes.Yellow;
+                    else if (inv.IsBOW)
+                        textBrush = Brushes.Green;
+                    else if (inv.IsFlame)
+                        textBrush = Brushes.Red;
 
                     TextureBrush imageBrush;
                     if (Program.ItemToImageTranslation.ContainsKey(inv.ItemID))
