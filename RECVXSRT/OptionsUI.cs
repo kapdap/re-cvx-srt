@@ -15,6 +15,7 @@ namespace RECVXSRT
             this.Text += string.Format(" {0}", Program.srtVersion);
 
             debugCheckBox.Checked = (Program.programSpecialOptions.Flags & ProgramFlags.Debug) == ProgramFlags.Debug;
+            debugEnemyCheckBox.Checked = (Program.programSpecialOptions.Flags & ProgramFlags.DebugEnemy) == ProgramFlags.DebugEnemy;
             noTitlebarCheckBox.Checked = (Program.programSpecialOptions.Flags & ProgramFlags.NoTitleBar) == ProgramFlags.NoTitleBar;
             alwaysOnTopCheckBox.Checked = (Program.programSpecialOptions.Flags & ProgramFlags.AlwaysOnTop) == ProgramFlags.AlwaysOnTop;
             transparentBackgroundCheckBox.Checked = (Program.programSpecialOptions.Flags & ProgramFlags.Transparent) == ProgramFlags.Transparent;
@@ -48,6 +49,11 @@ namespace RECVXSRT
                 Program.programSpecialOptions.Flags |= ProgramFlags.Debug;
             else if (!debugCheckBox.Checked && (Program.programSpecialOptions.Flags & ProgramFlags.Debug) == ProgramFlags.Debug)
                 Program.programSpecialOptions.Flags &= ~ProgramFlags.Debug;
+
+            if (debugEnemyCheckBox.Checked && (Program.programSpecialOptions.Flags & ProgramFlags.DebugEnemy) != ProgramFlags.DebugEnemy)
+                Program.programSpecialOptions.Flags |= ProgramFlags.DebugEnemy;
+            else if (!debugEnemyCheckBox.Checked && (Program.programSpecialOptions.Flags & ProgramFlags.DebugEnemy) == ProgramFlags.DebugEnemy)
+                Program.programSpecialOptions.Flags &= ~ProgramFlags.DebugEnemy;
 
             if (noTitlebarCheckBox.Checked && (Program.programSpecialOptions.Flags & ProgramFlags.NoTitleBar) != ProgramFlags.NoTitleBar)
                 Program.programSpecialOptions.Flags |= ProgramFlags.NoTitleBar;

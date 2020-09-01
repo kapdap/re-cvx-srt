@@ -51,6 +51,7 @@ namespace RECVXSRT
                         message.AppendFormat("{0}\r\n\t{1}\r\n\r\n", "--NoEnemyHealth", "Disables the enemy health display.");
                         message.AppendFormat("{0}\r\n\t{1}\r\n\r\n", "--DirectX", "Enables the DirectX overlay.");
                         message.AppendFormat("{0}\r\n\t{1}\r\n\r\n", "--Debug", "Debug mode.");
+                        message.AppendFormat("{0}\r\n\t{1}\r\n\r\n", "--DebugEnemy", "Enemy debug mode.");
 
                         MessageBox.Show(null, message.ToString().Trim(), string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Environment.Exit(0);
@@ -80,6 +81,9 @@ namespace RECVXSRT
 
                     if (arg.Equals("--Debug", StringComparison.InvariantCultureIgnoreCase))
                         programSpecialOptions.Flags |= ProgramFlags.Debug;
+
+                    if (arg.Equals("--DebugEnemy", StringComparison.InvariantCultureIgnoreCase))
+                        programSpecialOptions.Flags |= ProgramFlags.DebugEnemy;
                 }
 
                 // Context menu.

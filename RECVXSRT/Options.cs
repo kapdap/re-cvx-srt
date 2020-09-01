@@ -18,6 +18,11 @@ namespace RECVXSRT
             else
                 Flags &= ~ProgramFlags.Debug;
 
+            if (RegistryHelper.GetBoolValue(optionsKey, "DebugEnemy", false))
+                Flags |= ProgramFlags.DebugEnemy;
+            else
+                Flags &= ~ProgramFlags.DebugEnemy;
+
             if (RegistryHelper.GetBoolValue(optionsKey, "NoTitleBar", false))
                 Flags |= ProgramFlags.NoTitleBar;
             else
@@ -64,6 +69,11 @@ namespace RECVXSRT
                 optionsKey.SetValue("Debug", 1, RegistryValueKind.DWord);
             else
                 optionsKey.SetValue("Debug", 0, RegistryValueKind.DWord);
+
+            if ((Flags & ProgramFlags.DebugEnemy) == ProgramFlags.DebugEnemy)
+                optionsKey.SetValue("DebugEnemy", 1, RegistryValueKind.DWord);
+            else
+                optionsKey.SetValue("DebugEnemy", 0, RegistryValueKind.DWord);
 
             if ((Flags & ProgramFlags.NoTitleBar) == ProgramFlags.NoTitleBar)
                 optionsKey.SetValue("NoTitleBar", 1, RegistryValueKind.DWord);
