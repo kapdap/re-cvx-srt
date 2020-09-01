@@ -320,7 +320,7 @@ namespace RECVXSRT
 
         private void inventoryPanel_Paint(object sender, PaintEventArgs e)
         {
-            int currentSlot = 0;
+            int currentSlot = -1;
 
             if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoInventory))
             {
@@ -333,7 +333,7 @@ namespace RECVXSRT
 
                 foreach (InventoryEntry inv in Program.gameMemory.Player.Inventory)
                 {
-                    if (inv != default && inv.SlotPosition == 0 && inv.IsEmptySlot)
+                    if ((inv.SlotPosition == 0 || inv.SlotPosition == 1) && inv.IsEmptySlot)
                         currentSlot++;
 
                     if (inv == default || inv.SlotPosition < 0 || inv.SlotPosition > 11 || inv.IsEmptySlot)
@@ -366,11 +366,18 @@ namespace RECVXSRT
                         imageBrush = new TextureBrush(inventoryError, new Rectangle(0, 0, Program.INV_SLOT_WIDTH, Program.INV_SLOT_HEIGHT));
 
                     // Double-slot item.
-                    if (imageBrush.Image.Width == Program.INV_SLOT_WIDTH * 2)
+                    if (imageBrush.Image.Width == Program.INV_SLOT_WIDTH * 2 && inv.SlotPosition != 1)
                     {
-                        // Shift the quantity text over into the 2nd slot's area.
-                        textX += Program.INV_SLOT_WIDTH;
-                        currentSlot++;
+                        if (inv.SlotPosition == 0)
+                        {
+                            imageX = imageX;
+                        }
+                        else
+                        {
+                            // Shift the quantity text over into the 2nd slot's area.
+                            textX += Program.INV_SLOT_WIDTH;
+                            currentSlot++;
+                        }
                     }
 
                     e.Graphics.FillRectangle(imageBrush, imageX, imageY, imageBrush.Image.Width, imageBrush.Image.Height);

@@ -184,11 +184,11 @@ namespace RECVXSRT
 
         private void InventoryDraw(OverlayWindow w, Graphics g, int xOffset, int yOffset)
         {
-            int currentSlot = 0;
+            int currentSlot = -1;
 
             foreach (InventoryEntry inv in Program.gameMemory.Player.Inventory)
             {
-                if (inv != default && inv.SlotPosition == 0 && inv.IsEmptySlot)
+                if ((inv.SlotPosition == 0 || inv.SlotPosition == 1) && inv.IsEmptySlot)
                     currentSlot++;
 
                 if (inv == default || inv.SlotPosition < 0 || inv.SlotPosition > 11 || inv.IsEmptySlot)
@@ -229,11 +229,18 @@ namespace RECVXSRT
                 }
 
                 // Double-slot item.
-                if (r.Width == Program.INV_SLOT_WIDTH * 2)
+                if (r.Width == Program.INV_SLOT_WIDTH * 2 && inv.SlotPosition != 1)
                 {
-                    // Shift the quantity text over into the 2nd slot's area.
-                    textX += Program.INV_SLOT_WIDTH;
-                    currentSlot++;
+                    if (inv.SlotPosition == 0)
+                    {
+                        imageX = imageX - 50;
+                    }
+                    else
+                    {
+                        // Shift the quantity text over into the 2nd slot's area.
+                        textX += Program.INV_SLOT_WIDTH;
+                        currentSlot++;
+                    }
                 }
 
                 SharpDX.Mathematics.Interop.RawRectangleF drrf = new SharpDX.Mathematics.Interop.RawRectangleF(imageX, imageY, imageX + r.Width, imageY + r.Height);
