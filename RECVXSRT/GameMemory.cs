@@ -69,7 +69,7 @@ namespace RECVXSRT
         {
             int magic = 0x00002041;
 
-            if (Product.System == "PS3")
+            if (Product.Console == "PS3")
             {
                 switch (Player.Character)
                 {
@@ -154,8 +154,8 @@ namespace RECVXSRT
             IntPtr pointer = new IntPtr(Pointers.Enemy.ToInt64());
             int count = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.EnemyCount.ToInt64()), IsBigEndian);
 
-            int entryOffset = Product.System == "PS2" ? 0x0580 : 0x0578;
-            int modelOffset = Product.System == "PS2" ? 0x008B : 0x0088;
+            int entryOffset = Product.Console == "PS2" ? 0x0580 : 0x0578;
+            int modelOffset = Product.Console == "PS2" ? 0x008B : 0x0088;
 
             for (int i = 0; i < count; ++i)
             {

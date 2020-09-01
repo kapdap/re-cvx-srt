@@ -7,7 +7,7 @@ namespace RECVXSRT
         public string Code { get; private set; }
         public string Name { get; private set; }
         public string Country { get; private set; }
-        public string System { get; private set; }
+        public string Console { get; private set; }
         public bool Supported { get; private set; }
 
         public const string SLPM_65022 = "SLPM_650.22";
@@ -31,44 +31,44 @@ namespace RECVXSRT
         {
             Code = code;
             Supported = true;
-            System = String.Empty;
+            Console = String.Empty;
 
             switch (Code)
             {
                 case SLPM_65022:
                     Name = "BioHazard Code: Veronica Kanzenban";
                     Country = "JP";
-                    System = "PS2";
+                    Console = "PS2";
                     break;
 
                 case SLUS_20184:
                     Name = "Resident Evil Code: Veronica X";
                     Country = "US";
-                    System = "PS2";
+                    Console = "PS2";
                     break;
 
                 case SLES_50306:
                     Name = "Resident Evil Code: Veronica X";
                     Country = "EU";
-                    System = "PS2";
+                    Console = "PS2";
                     break;
 
                 case NPJB00135:
                     Name = "BioHazard Code: Veronica Kanzenban";
                     Country = "JP";
-                    System = "PS3";
+                    Console = "PS3";
                     break;
 
                 case NPUB30467:
                     Name = "Resident Evil Code: Veronica X HD";
                     Country = "US";
-                    System = "PS3";
+                    Console = "PS3";
                     break;
 
                 case NPEB00553:
                     Name = "Resident Evil Code: Veronica X";
                     Country = "EU";
-                    System = "PS3";
+                    Console = "PS3";
                     break;
 
                 default:
