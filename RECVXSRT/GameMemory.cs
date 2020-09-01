@@ -67,7 +67,29 @@ namespace RECVXSRT
 
         public void RefreshSlim()
         {
-            int magic = Product.System == "PS2" ? 0x00002041 : 0x0003D650;
+            int magic = 0x00002041;
+
+            if (Product.System == "PS3")
+            {
+                switch (Player.Character)
+                {
+                    case CharacterEnumeration.Chris:
+                        magic = 0x0003C4FC;
+                        break;
+
+                    case CharacterEnumeration.Steve:
+                        magic = 0x0003A4D0;
+                        break;
+
+                    case CharacterEnumeration.Wesker:
+                        magic = 0x0003E814;
+                        break;
+
+                    default:
+                        magic = 0x0003D650;
+                        break;
+                }
+            }
 
             IsRoomLoaded = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.RDXHeader.ToInt64())) == magic;
             IGTRunningTimer = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Time.ToInt64()), IsBigEndian);
@@ -77,8 +99,8 @@ namespace RECVXSRT
         {
             RefreshSlim();
 
+            Player.Character = (CharacterEnumeration)Memory.GetByteAt(Pointers.Character.ToInt64());
             Player.Difficulty = Memory.GetByteAt(Pointers.Difficulty.ToInt64());
-            Player.Character = Memory.GetByteAt(Pointers.Character.ToInt64());
             Player.Health = ByteHelper.SwapBytes(Memory.GetIntAt(Pointers.Health.ToInt64()), IsBigEndian);
             Player.Status = Memory.GetByteAt(Pointers.Status.ToInt64());
             Player.Poison = (Player.Status & 0x08) != 0;
@@ -100,7 +122,7 @@ namespace RECVXSRT
         {
             int index = -1;
 
-            IntPtr pointer = IntPtr.Add(Pointers.Inventory, Player.Character * 0x40);
+            IntPtr pointer = IntPtr.Add(Pointers.Inventory, (int)Player.Character * 0x40);
 
             for (int i = 0; i < 12; ++i)
             {

@@ -2,7 +2,7 @@
 {
     public class GamePlayer
     {
-        public int Character { get; set; }
+        public CharacterEnumeration Character { get; set; }
         public int Health { get; set; }
         public int MaxHealth { get; set; }
         public bool Poison { get; set; }
