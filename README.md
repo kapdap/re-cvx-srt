@@ -1,9 +1,9 @@
 # Resident Evil: Code: Veronica SRT
-A SRT (SpeedRun Tool) for Resident Evil: Code: Veronica that works with PCSX2 and RPCS3 emulators.
+A SRT (Speedrun Tool) for Resident Evil: Code: Veronica that works with PCSX2 and RPCS3 emulators.
 
 ## Download
 
-[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.1.0/re-cvx-srt_v0.2.1.0.zip) to download the latest release ***v0.2.1.0***.
+[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.2.0/re-cvx-srt_v0.2.2.0.zip) to download the latest release ***v0.2.2.0***.
 
 ## Changes
 
@@ -21,12 +21,12 @@ See the [CHANGELOG.md](CHANGELOG.md) file for changes and older release download
 * Retires used.
 * Saves used.
 * Inventory display.
+* Equipped weapon.
 * DirectX overlay.
 * JSON HTTP Endpoint.
 
 ### Planned
 
-* Equipped weapon.
 * Adjust window/overlay transparency.
 
 ### Known Bugs

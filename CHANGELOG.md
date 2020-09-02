@@ -7,7 +7,13 @@ Prerequisites:
 
 To extract .zip archives, use [7-Zip](https://www.7-zip.org/)!
 
-### [Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.1.0/re-cvx-srt_v0.2.1.0.zip) to download the latest release.
+### [Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.2.0/re-cvx-srt_v0.2.2.0.zip) to download the latest release.
+
+## [0.2.2.0 Beta](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.2.0/re-cvx-srt_v0.2.2.0.zip) (2020-09-02)
+* Show equipped weapon.
+* Display adjusted to fit equipped weapon on screen.
+* Small tweaks to window resizing when panels are disabled.
+* Show connected process name and PID in window title and debug mode.
 
 ## [0.2.1.0 Beta](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.1.0/re-cvx-srt_v0.2.1.0.zip) (2020-09-01)
 * Added Debug Enemy option. Use --DebugEnemy console flag or interface option to enable.
