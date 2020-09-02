@@ -141,6 +141,8 @@ namespace RECVXSRT
             {
                 g.DrawText(consolasBold, 16f, greyBrush, xOffset + 0, yOffset + (heightGap * ++i), "T:" + Program.gameMemory.IGTRunningTimer.ToString("0000000000"));
                 g.DrawText(consolasBold, 16f, greyBrush, xOffset + 0, yOffset + (heightGap * ++i), "C:" + Program.gameProcess.Product.Code);
+                g.DrawText(consolasBold, 16f, greyBrush, xOffset + 0, yOffset + (heightGap * ++i), "P:" + Program.mainProcess.ProcessName);
+                g.DrawText(consolasBold, 16f, greyBrush, xOffset + 0, yOffset + (heightGap * ++i), "I:" + Program.mainProcess.Id);
                 ++i;
             }
 
