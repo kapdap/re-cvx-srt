@@ -91,11 +91,11 @@ namespace RECVXSRT
                 GenerateImages();
 
                 // Set the width and height of the inventory display so it matches the maximum items and the scaling size of those items.
-                this.inventoryPanel.Width = Program.INV_SLOT_WIDTH * 2;
-                this.inventoryPanel.Height = Program.INV_SLOT_HEIGHT * 6;
+                inventoryPanel.Width = (Program.INV_SLOT_WIDTH * 2) + (Program.INV_SLOT_WIDTH / 2);
+                inventoryPanel.Height = Program.INV_SLOT_HEIGHT * 6;
 
                 // Adjust main form width as well.
-                this.Width = this.inventoryPanel.Width + this.statisticsPanel.Width + 24;
+                Width = inventoryPanel.Width + (statisticsPanel.Width - 30) + borderWidth;
 
                 // Only adjust form height if its greater than 545. We don't want it to go below this size.
                 if (titleHeight + inventoryPanel.Height > 545)
@@ -106,8 +106,18 @@ namespace RECVXSRT
                 // Disable rendering of the inventory panel.
                 inventoryPanel.Visible = false;
 
-                // Adjust main form width as well.
-                this.Width = this.statisticsPanel.Width + 2;
+                Height = titleHeight + playerHealthStatus.Height + 70;
+
+                if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.Debug))
+                    Height += 56;
+
+                if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoEnemyHealth))
+                {
+                    Height += 150;
+                    Width = statisticsPanel.Width + borderWidth;
+                }
+                else
+                    Width = playerHealthStatus.Width + borderWidth;
             }
 
             lastOverUpdate = DateTime.UtcNow.Ticks;
@@ -351,7 +361,7 @@ namespace RECVXSRT
 
                     int slotColumn = currentSlot % 2;
                     int slotRow = currentSlot / 2;
-                    int imageX = slotColumn * Program.INV_SLOT_WIDTH;
+                    int imageX = (slotColumn * Program.INV_SLOT_WIDTH) + (Program.INV_SLOT_WIDTH / 2);
                     int imageY = slotRow * Program.INV_SLOT_HEIGHT;
                     int textX = imageX + Program.INV_SLOT_WIDTH;
                     int textY = imageY + Program.INV_SLOT_HEIGHT;
@@ -373,12 +383,15 @@ namespace RECVXSRT
                     else
                         imageBrush = new TextureBrush(inventoryError, new Rectangle(0, 0, Program.INV_SLOT_WIDTH, Program.INV_SLOT_HEIGHT));
 
+                    imageBrush.TranslateTransform(Program.INV_SLOT_WIDTH / 2, 0);
+
                     // Double-slot item.
                     if (imageBrush.Image.Width == Program.INV_SLOT_WIDTH * 2 && inv.SlotPosition != 1)
                     {
                         if (inv.SlotPosition == 0)
                         {
-                            imageX = imageX;
+                            imageBrush.TranslateTransform(Program.INV_SLOT_WIDTH / 3 + Program.INV_SLOT_WIDTH, 0);
+                            imageX -= Program.INV_SLOT_WIDTH / 2;
                         }
                         else
                         {
