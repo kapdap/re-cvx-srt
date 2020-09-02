@@ -172,10 +172,10 @@ namespace RECVXSRT
                     int x = xOffset + 0;
                     int y = yOffset + (heightGap * ++i);
 
-                    DrawProgressBarDirectX(w, g, backBrush, foreBrush, x, y, 120, heightGap, enemy.Percentage * 100f, 100f);
+                    DrawProgressBarDirectX(w, g, backBrush, foreBrush, x, y, 160, heightGap, enemy.Percentage * 100f, 100f);
 
                     if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
-                        g.DrawText(consolasBold, 8f, redBrush, x + 2, y + 2, enemy.DebugMessage);
+                        g.DrawText(consolasBold, 10f, redBrush, x + 2, y, enemy.DebugMessage);
                     else
                         g.DrawText(consolasBold, 12f, redBrush, x + 5, y, enemy.HealthMessage);
                 }
