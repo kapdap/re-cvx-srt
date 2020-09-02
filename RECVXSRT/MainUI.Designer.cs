@@ -36,9 +36,11 @@
             // 
             // playerHealthStatus
             // 
+            this.playerHealthStatus.BackColor = System.Drawing.Color.Black;
             this.playerHealthStatus.Image = global::RECVXSRT.Properties.Resources.EMPTY;
             this.playerHealthStatus.InitialImage = global::RECVXSRT.Properties.Resources.EMPTY;
-            this.playerHealthStatus.Location = new System.Drawing.Point(1, 1);
+            this.playerHealthStatus.Location = new System.Drawing.Point(0, 0);
+            this.playerHealthStatus.Margin = new System.Windows.Forms.Padding(0);
             this.playerHealthStatus.Name = "playerHealthStatus";
             this.playerHealthStatus.Size = new System.Drawing.Size(150, 60);
             this.playerHealthStatus.TabIndex = 0;
@@ -47,17 +49,21 @@
             // 
             // inventoryPanel
             // 
-            this.inventoryPanel.Location = new System.Drawing.Point(157, 1);
+            this.inventoryPanel.BackColor = System.Drawing.Color.Black;
+            this.inventoryPanel.Location = new System.Drawing.Point(150, 0);
+            this.inventoryPanel.Margin = new System.Windows.Forms.Padding(0);
             this.inventoryPanel.Name = "inventoryPanel";
-            this.inventoryPanel.Size = new System.Drawing.Size(168, 504);
+            this.inventoryPanel.Size = new System.Drawing.Size(210, 504);
             this.inventoryPanel.TabIndex = 3;
             this.inventoryPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventoryPanel_MouseDown);
             // 
             // statisticsPanel
             // 
-            this.statisticsPanel.Location = new System.Drawing.Point(1, 67);
+            this.statisticsPanel.BackColor = System.Drawing.Color.Black;
+            this.statisticsPanel.Location = new System.Drawing.Point(1, 60);
+            this.statisticsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.statisticsPanel.Name = "statisticsPanel";
-            this.statisticsPanel.Size = new System.Drawing.Size(150, 438);
+            this.statisticsPanel.Size = new System.Drawing.Size(180, 240);
             this.statisticsPanel.TabIndex = 3;
             this.statisticsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.statisticsPanel_MouseDown);
             // 
@@ -66,10 +72,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(326, 506);
+            this.ClientSize = new System.Drawing.Size(360, 504);
             this.Controls.Add(this.statisticsPanel);
-            this.Controls.Add(this.inventoryPanel);
             this.Controls.Add(this.playerHealthStatus);
+            this.Controls.Add(this.inventoryPanel);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
