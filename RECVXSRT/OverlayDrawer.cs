@@ -62,7 +62,7 @@ namespace RECVXSRT
         {
             StatisticsDraw(w, g, 15, 60);
             HealthDraw(w, g, 15, 35);
-            InventoryDraw(w, g, 135, 35);
+            InventoryDraw(w, g, 175, 35);
         }
 
         private void DrawProgressBarDirectX(OverlayWindow w, Graphics g, SolidBrush bgBrush, SolidBrush foreBrush, float x, float y, float width, float height, float value, float maximum = 100)
@@ -186,77 +186,80 @@ namespace RECVXSRT
         {
             int currentSlot = -1;
 
-            foreach (InventoryEntry inv in Program.gameMemory.Player.Inventory)
+            if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoInventory))
             {
-                if ((inv.SlotPosition == 0 || inv.SlotPosition == 1) && inv.IsEmptySlot)
+                foreach (InventoryEntry inv in Program.gameMemory.Player.Inventory)
+                {
+                    if ((inv.SlotPosition == 0 || inv.SlotPosition == 1) && inv.IsEmptySlot)
+                        currentSlot++;
+
+                    if (inv == default || inv.IsEmptySlot)
+                        continue;
+
                     currentSlot++;
 
-                if (inv == default || inv.SlotPosition < 0 || inv.SlotPosition > 11 || inv.IsEmptySlot)
-                    continue;
+                    int slotColumn = currentSlot % 2;
+                    int slotRow = currentSlot / 2;
+                    int imageX = xOffset + (slotColumn * Program.INV_SLOT_WIDTH);
+                    int imageY = yOffset + (slotRow * Program.INV_SLOT_HEIGHT);
+                    int textX = imageX + (int)(Program.INV_SLOT_HEIGHT * 0.7);
+                    int textY = imageY + (int)(Program.INV_SLOT_HEIGHT * 0.7);
+                    bool evenSlotColumn = slotColumn % 2 == 0;
+                    SolidBrush textBrush = whiteBrush;
 
-                currentSlot++;
+                    if (inv.Quantity == 0)
+                        textBrush = darkRedBrush;
+                    else if (inv.IsGas)
+                        textBrush = yellowBrush;
+                    else if (inv.IsBOW)
+                        textBrush = greenBrush;
+                    else if (inv.IsFlame)
+                        textBrush = redBrush;
 
-                int slotColumn = currentSlot % 2;
-                int slotRow = currentSlot / 2;
-                int imageX = xOffset + (slotColumn * Program.INV_SLOT_WIDTH);
-                int imageY = yOffset + (slotRow * Program.INV_SLOT_HEIGHT);
-                int textX = imageX + (int)(Program.INV_SLOT_HEIGHT * 0.7);
-                int textY = imageY + (int)(Program.INV_SLOT_HEIGHT * 0.7);
-                bool evenSlotColumn = slotColumn % 2 == 0;
-                SolidBrush textBrush = whiteBrush;
+                    System.Drawing.Rectangle r;
+                    SharpDX.Direct2D1.Bitmap b;
 
-                if (inv.Quantity == 0)
-                    textBrush = darkRedBrush;
-                else if (inv.IsGas)
-                    textBrush = yellowBrush;
-                else if (inv.IsBOW)
-                    textBrush = greenBrush;
-                else if (inv.IsFlame)
-                    textBrush = redBrush;
-
-                System.Drawing.Rectangle r;
-                SharpDX.Direct2D1.Bitmap b;
-
-                if (!inv.IsEmptySlot && Program.ItemToImageTranslation.ContainsKey(inv.ItemID))
-                {
-                    r = Program.ItemToImageTranslation[inv.ItemID];
-                    b = inventoryImage;
-                }
-                else
-                {
-                    r = new System.Drawing.Rectangle(0, 0, Program.INV_SLOT_WIDTH, Program.INV_SLOT_HEIGHT);
-                    b = inventoryError;
-                }
-
-                // Double-slot item.
-                if (r.Width == Program.INV_SLOT_WIDTH * 2 && inv.SlotPosition != 1)
-                {
-                    if (inv.SlotPosition == 0)
+                    if (!inv.IsEmptySlot && Program.ItemToImageTranslation.ContainsKey(inv.ItemID))
                     {
-                        imageX = imageX - 50;
+                        r = Program.ItemToImageTranslation[inv.ItemID];
+                        b = inventoryImage;
                     }
                     else
                     {
-                        // Shift the quantity text over into the 2nd slot's area.
-                        textX += Program.INV_SLOT_WIDTH;
-                        currentSlot++;
+                        r = new System.Drawing.Rectangle(0, 0, Program.INV_SLOT_WIDTH, Program.INV_SLOT_HEIGHT);
+                        b = inventoryError;
                     }
-                }
 
-                SharpDX.Mathematics.Interop.RawRectangleF drrf = new SharpDX.Mathematics.Interop.RawRectangleF(imageX, imageY, imageX + r.Width, imageY + r.Height);
-                using (SharpDX.Direct2D1.Bitmap croppedBitmap = new SharpDX.Direct2D1.Bitmap(g.GetRenderTarget(), new SharpDX.Size2(r.Width, r.Height), new SharpDX.Direct2D1.BitmapProperties()
-                {
-                    PixelFormat = new SharpDX.Direct2D1.PixelFormat()
+                    // Double-slot item.
+                    if (r.Width == Program.INV_SLOT_WIDTH * 2 && inv.SlotPosition != 1)
                     {
-                        AlphaMode = SharpDX.Direct2D1.AlphaMode.Premultiplied,
-                        Format = SharpDX.DXGI.Format.R8G8B8A8_UNorm
+                        if (inv.SlotPosition == 0)
+                        {
+                            imageX -= Program.INV_SLOT_WIDTH;
+                        }
+                        else
+                        {
+                            // Shift the quantity text over into the 2nd slot's area.
+                            textX += Program.INV_SLOT_WIDTH;
+                            currentSlot++;
+                        }
                     }
-                }))
-                {
-                    croppedBitmap.CopyFromBitmap(b, new SharpDX.Mathematics.Interop.RawPoint(0, 0), RectangleToRawRectangle(r));
-                    g.GetRenderTarget().DrawBitmap(croppedBitmap, drrf, 1f, SharpDX.Direct2D1.BitmapInterpolationMode.Linear);
+
+                    SharpDX.Mathematics.Interop.RawRectangleF drrf = new SharpDX.Mathematics.Interop.RawRectangleF(imageX, imageY, imageX + r.Width, imageY + r.Height);
+                    using (SharpDX.Direct2D1.Bitmap croppedBitmap = new SharpDX.Direct2D1.Bitmap(g.GetRenderTarget(), new SharpDX.Size2(r.Width, r.Height), new SharpDX.Direct2D1.BitmapProperties()
+                    {
+                        PixelFormat = new SharpDX.Direct2D1.PixelFormat()
+                        {
+                            AlphaMode = SharpDX.Direct2D1.AlphaMode.Premultiplied,
+                            Format = SharpDX.DXGI.Format.R8G8B8A8_UNorm
+                        }
+                    }))
+                    {
+                        croppedBitmap.CopyFromBitmap(b, new SharpDX.Mathematics.Interop.RawPoint(0, 0), RectangleToRawRectangle(r));
+                        g.GetRenderTarget().DrawBitmap(croppedBitmap, drrf, 1f, SharpDX.Direct2D1.BitmapInterpolationMode.Linear);
+                    }
+                    g.DrawText(consolasBold, 18f, textBrush, textX, textY, !inv.Infinite ? inv.Quantity.ToString() : "∞");
                 }
-                g.DrawText(consolasBold, 18f, textBrush, textX, textY, !inv.Infinite ? inv.Quantity.ToString() : "∞");
             }
         }
 
