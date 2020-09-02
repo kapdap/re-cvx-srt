@@ -55,27 +55,35 @@ namespace RECVXSRT
             InitializeComponent();
 
             // Set titlebar.
-            this.Text += string.Format(" {0}", Program.srtVersion);
+            Text += string.Format(" {0} - {1} ({2})", Program.srtVersion, Program.mainProcess.ProcessName, Program.mainProcess.Id);
 
-            this.ContextMenu = Program.contextMenu;
-            this.playerHealthStatus.ContextMenu = Program.contextMenu;
-            this.statisticsPanel.ContextMenu = Program.contextMenu;
-            this.inventoryPanel.ContextMenu = Program.contextMenu;
+            ContextMenu = Program.contextMenu;
+            playerHealthStatus.ContextMenu = Program.contextMenu;
+            statisticsPanel.ContextMenu = Program.contextMenu;
+            inventoryPanel.ContextMenu = Program.contextMenu;
 
             // JSON http endpoint.
             jsonServer = new JSONServer();
             jsonServerTask = jsonServer.Start(CancellationToken.None);
 
             //GDI+
-            this.playerHealthStatus.Paint += this.playerHealthStatus_Paint;
-            this.statisticsPanel.Paint += this.statisticsPanel_Paint;
-            this.inventoryPanel.Paint += this.inventoryPanel_Paint;
+            playerHealthStatus.Paint += playerHealthStatus_Paint;
+            statisticsPanel.Paint += statisticsPanel_Paint;
+            inventoryPanel.Paint += inventoryPanel_Paint;
+
+            int titleHeight = 39;
+            int borderWidth = 16;
 
             if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoTitleBar))
-                this.FormBorderStyle = FormBorderStyle.None;
+            {
+                titleHeight = 0;
+                borderWidth = 0;
+
+                FormBorderStyle = FormBorderStyle.None;
+            }
 
             if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.Transparent))
-                this.TransparencyKey = Color.Black;
+                TransparencyKey = Color.Black;
 
             // Only run the following code if we're rendering inventory.
             if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoInventory))
@@ -175,17 +183,17 @@ namespace RECVXSRT
                 if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.AlwaysOnTop))
                 {
                     bool hasFocus;
-                    if (this.InvokeRequired)
-                        hasFocus = PInvoke.HasActiveFocus((IntPtr)this.Invoke(new Func<IntPtr>(() => this.Handle)));
+                    if (InvokeRequired)
+                        hasFocus = PInvoke.HasActiveFocus((IntPtr)Invoke(new Func<IntPtr>(() => Handle)));
                     else
-                        hasFocus = PInvoke.HasActiveFocus(this.Handle);
+                        hasFocus = PInvoke.HasActiveFocus(Handle);
 
                     if (!hasFocus)
                     {
-                        if (this.InvokeRequired)
-                            this.Invoke(new Action(() => this.TopMost = true));
+                        if (InvokeRequired)
+                            Invoke(new Action(() => TopMost = true));
                         else
-                            this.TopMost = true;
+                            TopMost = true;
                     }
                 }
 
@@ -235,7 +243,7 @@ namespace RECVXSRT
                 }
 
                 // Always draw this as these are simple text draws and contains the IGT/frame count.
-                this.statisticsPanel.Invalidate();
+                statisticsPanel.Invalidate();
             }
             catch (Exception ex)
             {
@@ -381,8 +389,6 @@ namespace RECVXSRT
                     }
 
                     e.Graphics.FillRectangle(imageBrush, imageX, imageY, imageBrush.Image.Width, imageBrush.Image.Height);
-
-                    // TODO: Colors for different ammo types (Red = Flame, Green = B.O.W., Yellow = Acid, Blue = Normal).
                     e.Graphics.DrawString(!inv.Infinite ? inv.Quantity.ToString() : "∞", new Font("Consolas", 14, FontStyle.Bold), textBrush, textX, textY, invStringFormat);
                 }
             }
@@ -410,11 +416,12 @@ namespace RECVXSRT
             {
                 e.Graphics.DrawString("T:" + Program.gameMemory.IGTRunningTimer.ToString("0000000000"), new Font("Consolas", 9, FontStyle.Bold), Brushes.Gray, 0, 25, stdStringFormat);
                 e.Graphics.DrawString("C:" + Program.gameProcess.Product.Code, new Font("Consolas", 9, FontStyle.Bold), Brushes.Gray, 0, 38, stdStringFormat);
-                heightOffset = 30; // Adding an additional offset to accomdate Raw IGT.
+                e.Graphics.DrawString("P:" + Program.mainProcess.ProcessName, new Font("Consolas", 9, FontStyle.Bold), Brushes.Gray, 0, 51, stdStringFormat);
+                e.Graphics.DrawString("I:" + Program.mainProcess.Id, new Font("Consolas", 9, FontStyle.Bold), Brushes.Gray, 0, 64, stdStringFormat);
+                heightOffset = 56; // Adding an additional offset to accomdate Raw IGT.
             }
 
             string status = "Normal";
-
             if (Program.gameMemory.Player.Gassed)
                 status = "Gassed";
             else if (Program.gameMemory.Player.Poison)
@@ -507,15 +514,15 @@ namespace RECVXSRT
 
         private void CloseForm()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new Action(() =>
+                Invoke(new Action(() =>
                 {
-                    this.Close();
+                    Close();
                 }));
             }
             else
-                this.Close();
+                Close();
         }
     }
 }
