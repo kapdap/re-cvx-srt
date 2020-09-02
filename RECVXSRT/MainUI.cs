@@ -445,26 +445,29 @@ namespace RECVXSRT
             e.Graphics.DrawString("Retry: " + Program.gameMemory.Player.Retry, new Font("Consolas", 10, FontStyle.Bold), Brushes.White, 0, heightOffset + 51, stdStringFormat);
             heightOffset += 39;
 
-            e.Graphics.DrawString("Enemy HP", new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, 0, heightOffset + (heightGap * ++i), stdStringFormat);
-
-            List<EnemyEntry> enemyList = Program.gameMemory.EnemyEntry;
-
-            if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
-                enemyList = enemyList.OrderBy(a => a.Slot).ToList();
-            else
-                enemyList = enemyList.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP).ToList();
-
-            foreach (EnemyEntry enemy in enemyList)
+            if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoEnemyHealth))
             {
-                int x = 0;
-                int y = heightOffset + (heightGap * ++i);
+                e.Graphics.DrawString("Enemy HP", new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, 0, heightOffset + (heightGap * ++i), stdStringFormat);
 
-                DrawProgressBarGDI(e, backBrushGDI, foreBrushGDI, x, y, 146, heightGap, enemy.Percentage * 100f, 100f);
+                List<EnemyEntry> enemyList = Program.gameMemory.EnemyEntry;
 
                 if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
-                    e.Graphics.DrawString(enemy.DebugMessage, new Font("Consolas", 8, FontStyle.Regular), Brushes.Red, x, y + 1, stdStringFormat);
+                    enemyList = enemyList.OrderBy(a => a.Slot).ToList();
                 else
-                    e.Graphics.DrawString(enemy.HealthMessage, new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
+                    enemyList = enemyList.Where(a => a.IsAlive).OrderBy(a => a.Percentage).ThenByDescending(a => a.CurrentHP).ToList();
+
+                foreach (EnemyEntry enemy in enemyList)
+                {
+                    int x = 1;
+                    int y = heightOffset + (heightGap * ++i);
+
+                    DrawProgressBarGDI(e, backBrushGDI, foreBrushGDI, x, y, 176, heightGap, enemy.Percentage * 100f, 100f);
+
+                    if (Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.DebugEnemy))
+                        e.Graphics.DrawString(enemy.DebugMessage, new Font("Consolas", 8, FontStyle.Regular), Brushes.Red, x + 2, y + 1, stdStringFormat);
+                    else
+                        e.Graphics.DrawString(enemy.HealthMessage, new Font("Consolas", 10, FontStyle.Bold), Brushes.Red, x, y, stdStringFormat);
+                }
             }
         }
 
