@@ -354,7 +354,7 @@ namespace RECVXSRT
                     if ((inv.SlotPosition == 0 || inv.SlotPosition == 1) && inv.IsEmptySlot)
                         currentSlot++;
 
-                    if (inv == default || inv.SlotPosition < 0 || inv.SlotPosition > 11 || inv.IsEmptySlot)
+                    if (inv == default || inv.IsEmptySlot)
                         continue;
 
                     currentSlot++;
