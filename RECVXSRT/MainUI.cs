@@ -98,13 +98,13 @@ namespace RECVXSRT
                 this.Width = this.inventoryPanel.Width + this.statisticsPanel.Width + 24;
 
                 // Only adjust form height if its greater than 545. We don't want it to go below this size.
-                if (41 + this.inventoryPanel.Height > 545)
-                    this.Height = 41 + this.inventoryPanel.Height;
+                if (titleHeight + inventoryPanel.Height > 545)
+                    Height = titleHeight + inventoryPanel.Height;
             }
             else
             {
                 // Disable rendering of the inventory panel.
-                this.inventoryPanel.Visible = false;
+                inventoryPanel.Visible = false;
 
                 // Adjust main form width as well.
                 this.Width = this.statisticsPanel.Width + 2;
@@ -231,9 +231,9 @@ namespace RECVXSRT
                         Program.gameMemory.Refresh();
 
                         // Only draw these periodically to reduce CPU usage.
-                        this.playerHealthStatus.Invalidate();
+                        playerHealthStatus.Invalidate();
                         if (!Program.programSpecialOptions.Flags.HasFlag(ProgramFlags.NoInventory))
-                            this.inventoryPanel.Invalidate();
+                            inventoryPanel.Invalidate();
                     }
                     else
                     {
