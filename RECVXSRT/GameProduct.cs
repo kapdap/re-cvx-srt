@@ -36,37 +36,37 @@ namespace RECVXSRT
             switch (Code)
             {
                 case SLPM_65022:
-                    Name = "BioHazard Code: Veronica Kanzenban";
+                    Name = "BioHazard: Code: Veronica Kanzenban";
                     Country = "JP";
                     Console = "PS2";
                     break;
 
                 case SLUS_20184:
-                    Name = "Resident Evil Code: Veronica X";
+                    Name = "Resident Evil: Code: Veronica X";
                     Country = "US";
                     Console = "PS2";
                     break;
 
                 case SLES_50306:
-                    Name = "Resident Evil Code: Veronica X";
+                    Name = "Resident Evil: Code: Veronica X";
                     Country = "EU";
                     Console = "PS2";
                     break;
 
                 case NPJB00135:
-                    Name = "BioHazard Code: Veronica Kanzenban";
+                    Name = "BioHazard: Code: Veronica Kanzenban";
                     Country = "JP";
                     Console = "PS3";
                     break;
 
                 case NPUB30467:
-                    Name = "Resident Evil Code: Veronica X HD";
+                    Name = "Resident Evil: Code: Veronica X HD";
                     Country = "US";
                     Console = "PS3";
                     break;
 
                 case NPEB00553:
-                    Name = "Resident Evil Code: Veronica X";
+                    Name = "Resident Evil: Code: Veronica X";
                     Country = "EU";
                     Console = "PS3";
                     break;
