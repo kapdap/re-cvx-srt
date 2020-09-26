@@ -3,7 +3,7 @@ layout: page
 title: Home
 ---
 
-RE CVX SRT is a speedrun tool for Resident Evil: Code: Veronica that works with PCSX2 and RPCS3 emulators.
+RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica) that works with [PCSX2](https://pcsx2.net/) and [RPCS3](https://rpcs3.net/) emulators.
 
 *Last Update: 2020-09-30 ([changelog](changelog.html))*.
 
