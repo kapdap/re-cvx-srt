@@ -28,6 +28,7 @@ A SRT (Speedrun Tool) for Resident Evil: Code: Veronica that works with PCSX2 an
 * Saves used.
 * F.A.S used.
 * Rank/score calculations.
+* Customizable interface.
 * JSON HTTP Server via **[SRTPluginUIJSON](https://github.com/Squirrelies/SRTPluginUIJSON/){:target="_blank" rel="noopener"}**.
 
 ### Planned
