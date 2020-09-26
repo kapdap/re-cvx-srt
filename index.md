@@ -3,7 +3,7 @@ layout: page
 title: Home
 ---
 
-RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica) that works with [PCSX2](https://pcsx2.net/) and [RPCS3](https://rpcs3.net/) emulators.
+RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica){:target="_blank" rel="noopener"} that works with [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"} and [RPCS3](https://rpcs3.net/){:target="_blank" rel="noopener"} emulators.
 
 *Last Update: 2020-09-30 ([changelog](changelog.html))*.
 
@@ -39,7 +39,7 @@ RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wik
 
 The following emulators and game releases are currently supported.
 
-### [RPCS3](https://rpcs3.net/)
+### [RPCS3](https://rpcs3.net/){:target="_blank" rel="noopener"}
 
 PlayStation 3 releases:
 
@@ -47,7 +47,7 @@ PlayStation 3 releases:
   - [**NPUB30467**] [US] Resident Evil Code: Veronica X HD
   - [**NPEB00553**] [EU] Resident Evil Code: Veronica X
 
-### [PCSX2](https://pcsx2.net/)
+### [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"}
 
 PlayStation 2 releases:
 
