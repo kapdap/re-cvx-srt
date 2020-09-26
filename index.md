@@ -9,7 +9,7 @@ A SRT (Speedrun Tool) for Resident Evil: Code: Veronica that works with PCSX2 an
 
 ## Installation
 
-1. Download and install any missing **[prerequisite](/re-cvx-srt/downloads.html#Prerequisite)** software.
+1. Download and install any missing **[prerequisite](/re-cvx-srt/downloads.html#Prerequisites)** software.
 2. Download and extract the latest version of **[SRT Host 64-bit](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}**.
 3. Download the latest **[RE CVX SRT Plugin Pack](https://github.com/kapdap/re-cvx-srt/releases/download/{{ site.pack_version }}/re-cvx-srt-plugin-pack_v{{ site.pack_version }}.zip)**.
 4. Extract the plugin pack contents to the SRT Host **plugins** folder.
