@@ -1,1 +1,23 @@
-theme: jekyll-theme-hacker
+title: RE CVX SRT
+author: Kapdap
+email: kapdap@pm.me
+show_excerpts: true
+
+markdown: kramdown
+
+github_username: kapdap
+rss: rss
+
+header_pages:
+ - index.md
+ - downloads.md
+ - screenshots.md
+ - changelog.md
+ - LICENSE.md
+ - about.md
+
+theme: minima
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag

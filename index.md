@@ -1,57 +1,58 @@
-# Resident Evil: Code: Veronica SRT
+---
+layout: page
+title: Home
+interface_version: 0.9.0.0
+provider_version: 0.9.0.0
+directx_version: 0.9.0.0
+---
+
 A SRT (Speedrun Tool) for Resident Evil: Code: Veronica that works with PCSX2 and RPCS3 emulators.
 
-## Download
+*Last Update: 2020-09-30 ([changelog](changelog.html))*.
 
-[Click here](https://github.com/kapdap/re-cvx-srt/releases/download/0.2.2.0/re-cvx-srt_v0.2.2.0.zip) to download the latest release ***v0.2.2.0***.
+## Installation
 
-## Changes
-
-See the [CHANGELOG.md](CHANGELOG.md) file for changes and older release downloads.
+1. Download and install any missing **[prerequisite](/re-cvx-srt/downloads.html#Prerequisite)** software.
+2. Download and extract the latest version of **[SRT Host 64-bit](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}**.
+3. Download the latest **[RE CVX SRT Provider](https://github.com/kapdap/re-cvx-srt-provider/releases/download/{{ page.provider_version }}/re-cvx-srt-provider_v{{ page.provider_version }}.zip)** and **[RE CVX SRT UI WPF](https://github.com/kapdap/re-cvx-srt-ui-wpf/releases/download/{{ page.interface_version }}/re-cvx-srt-ui-wpf_v{{ page.interface_version }}.zip)** plugins.
+4. Extract plugin contents to the SRT Host **plugins** folder.
+5. Run **SRTHost.exe** and start Martian Gothic.
 
 ## Features
-
-### Implemented
 
 * Enemy health.
 * Player health.
 * Poison status.
 * Gassed status (Poisoned by Nosferatus gas attack).
+* Inventory display.
+* Equipped weapon.
 * In-game timer.
 * Retires used.
 * Saves used.
-* Inventory display.
-* Equipped weapon.
-* DirectX overlay.
-* JSON HTTP Endpoint.
+* F.A.S used.
+* Rank/score calculations.
+* JSON HTTP Server via **[SRTPluginUIJSON](https://github.com/Squirrelies/SRTPluginUIJSON/){:target="_blank" rel="noopener"}**.
 
 ### Planned
 
-* Adjust window/overlay transparency.
-
-### Known Bugs
-
-* Overlay will stay visible when the emulator window is closed.
+* DirectX overlay.
 
 ## Support
+
 The following emulators and game releases are currently supported.
 
 ### [RPCS3](https://rpcs3.net/)
+
 PlayStation 3 releases:
+
   - [**NPJB00135**] [JP] BioHazard Code: Veronica Kanzenban
   - [**NPUB30467**] [US] Resident Evil Code: Veronica X HD
   - [**NPEB00553**] [EU] Resident Evil Code: Veronica X
 
 ### [PCSX2](https://pcsx2.net/)
+
 PlayStation 2 releases:
+
   - [**SLPM-650.22**] [JP] BioHazard Code: Veronica Kanzenban 
   - [**SLUS-201.84**] [US] Resident Evil Code: Veronica X
   - [**SLES-503.06**] [EU] Resident Evil Code: Veronica X
-
-## Building
-
-For information on how to build the source code yourself, see [BUILDING.md](BUILDING.md).
-
-## Special Thanks
-
-* [Squirrelies](https://github.com/Squirrelies) and contributors of the original [RE2REmakeSRT](https://github.com/Squirrelies/RE2REmakeSRT) which this SRT is derived from.
