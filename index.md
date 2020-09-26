@@ -26,7 +26,7 @@ RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wik
 * In-game timer.
 * Retires used.
 * Saves used.
-* F.A.S used.
+* F.A.S. used.
 * Rank/score calculations.
 * Customizable interface.
 * JSON HTTP Server via **[SRTPluginUIJSON](https://github.com/Squirrelies/SRTPluginUIJSON/){:target="_blank" rel="noopener"}**.
