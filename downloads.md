@@ -2,9 +2,12 @@
 layout: page
 title: Downloads
 ---
-### Components
+### Host
 
 * [SRT Host 64-bit](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}
+
+### Plugins
+
 * [RE CVX SRT Provider v{{ site.provider_version }}](https://github.com/kapdap/re-cvx-srt-provider/releases/download/{{ site.provider_version }}/re-cvx-srt-provider_v{{ site.provider_version }}.zip)
 * [RE CVX SRT UI WPF v{{ site.interface_version }}](https://github.com/kapdap/re-cvx-srt-ui-wpf/releases/download/{{ site.interface_version }}/re-cvx-srt-ui-wpf_v{{ site.interface_version }}.zip)
 * [RE CVX SRT UI DirectX v{{ site.directx_version }}](https://github.com/kapdap/re-cvx-srt-ui-directx/releases/download/{{ site.directx_version }}/re-cvx-srt-ui-directx_v{{ site.directx_version }}.zip)
