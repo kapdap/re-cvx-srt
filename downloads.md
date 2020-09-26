@@ -4,12 +4,15 @@ title: Downloads
 interface_version: 0.9.0.0
 provider_version: 0.9.0.0
 directx_version: 0.9.0.0
+winforms_version: 0.9.0.0
 ---
 ### Components
 
 * [SRT Host 32-bit](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}
-* [MGU SRT Provider](https://github.com/kapdap/mgu-srt-provider/releases/download/{{ page.provider_version }}/mgu-srt-provider_v{{ page.provider_version }}.zip)
-* [MGU SRT UI WPF](https://github.com/kapdap/mgu-srt-ui-wpf/releases/download/{{ page.interface_version }}/mgu-srt-ui-wpf_v{{ page.interface_version }}.zip)
+* [RE CVX SRT Provider](https://github.com/kapdap/re-cvx-srt-provider/releases/download/{{ page.provider_version }}/re-cvx-srt-provider_v{{ page.provider_version }}.zip)
+* [RE CVX SRT UI WPF](https://github.com/kapdap/re-cvx-srt-ui-wpf/releases/download/{{ page.interface_version }}/re-cvx-srt-ui-wpf_v{{ page.interface_version }}.zip)
+* [RE CVX SRT UI DirectX](https://github.com/kapdap/re-cvx-srt-ui-directx/releases/download/{{ page.directx_version }}/re-cvx-srt-ui-winforms_v{{ page.directx_version }}.zip)
+* [RE CVX SRT UI WinForms](https://github.com/kapdap/re-cvx-srt-ui-winforms/releases/download/{{ page.winforms_version }}/re-cvx-srt-ui-winforms_v{{ page.winforms_version }}.zip) (Deprecated)
 
 ### Prerequisites:
 * [.NET Core v3.1 x86](https://dotnet.microsoft.com/download/dotnet-core/current/runtime){:target="_blank" rel="noopener"} or newer.
