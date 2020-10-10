@@ -2,7 +2,7 @@
 layout: page
 title: About
 ---
-RE CVX SRT Provider and RE CVX SRT UI WPF created by {{ site.author }}.
+RE CVX SRT Plugins created by [{{ site.author }}](https://github.com/kapdap/).
 
 ## Repositories
 
