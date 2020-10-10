@@ -4,7 +4,7 @@ title: Downloads
 ---
 ### Host
 
-* [SRT Host 64-bit](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}
+* [SRT Host](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}
 
 ### Provider Plugin
 
@@ -13,8 +13,6 @@ title: Downloads
 ### User Interface Plugins
 
 * [RE CVX SRT UI WPF v{{ site.interface_version }}](https://github.com/kapdap/re-cvx-srt-ui-wpf/releases/download/{{ site.interface_version }}/re-cvx-srt-ui-wpf_v{{ site.interface_version }}.zip)
-* [RE CVX SRT UI DirectX v{{ site.directx_version }}](https://github.com/kapdap/re-cvx-srt-ui-directx/releases/download/{{ site.directx_version }}/re-cvx-srt-ui-directx_v{{ site.directx_version }}.zip)
-* [RE CVX SRT UI WinForms v{{ site.winforms_version }}](https://github.com/kapdap/re-cvx-srt-ui-winforms/releases/download/{{ site.winforms_version }}/re-cvx-srt-ui-winforms_v{{ site.winforms_version }}.zip) (Deprecated)
 
 ### Prerequisites:
 
