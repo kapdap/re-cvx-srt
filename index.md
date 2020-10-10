@@ -7,6 +7,8 @@ RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wik
 
 *Last Update: 2020-10-10 ([changelog](changelog.html))*.
 
+<img align="right" width="456" height="576" src="{{ site.url }}/re-cvx-srt/assets/srt_window_detailed.png" alt="RE CVX SRT main window">
+
 ## Installation
 
 2. Download and extract the latest version of **[SRT Host](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}**.
