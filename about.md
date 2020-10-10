@@ -8,7 +8,7 @@ RE CVX SRT Plugins created by [{{ site.author }}](https://github.com/kapdap/).
 
 * [RE CVX SRT Provider](https://github.com/kapdap/re-cvx-srt-provider/){:target="_blank" rel="noopener"}
 * [RE CVX SRT UI WPF](https://github.com/kapdap/re-cvx-srt-ui-wpf/){:target="_blank" rel="noopener"}
-* [RE CVX SRT UI WinForms](https://github.com/kapdap/re-cvx-srt-ui-winforms/){:target="_blank" rel="noopener"} (Deprecated)
+* [RE CVX SRT UI DirectX Overlay](https://github.com/kapdap/re-cvx-srt-ui-directx-overlay/){:target="_blank" rel="noopener"}
 
 ## Special Thanks
 
