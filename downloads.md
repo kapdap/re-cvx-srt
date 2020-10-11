@@ -13,7 +13,7 @@ title: Downloads
 ### User Interface Plugins
 
 * [RE CVX SRT UI WPF v{{ site.interface_version }}](https://github.com/kapdap/re-cvx-srt-ui-wpf/releases/download/{{ site.interface_version }}/re-cvx-srt-ui-wpf_v{{ site.interface_version }}.zip)
-* [RE CVX UI DirectX Overlay v{{ site.directx_version }}](https://github.com/kapdap/re-cvx-srt-ui-directx-overlay/releases/download/{{ site.directx_version }}/re-cvx-srt-ui-directx-overlay_v{{ site.directx_version }}.zip)
+* [RE CVX SRT UI DirectX Overlay v{{ site.directx_version }}](https://github.com/kapdap/re-cvx-srt-ui-directx-overlay/releases/download/{{ site.directx_version }}/re-cvx-srt-ui-directx-overlay_v{{ site.directx_version }}.zip)
 
 ### Prerequisites:
 
