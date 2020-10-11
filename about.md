@@ -14,6 +14,9 @@ RE CVX SRT Plugins created by [{{ site.author }}](https://github.com/kapdap/).
 
 * [Squirrelies](https://github.com/Squirrelies){:target="_blank" rel="noopener"} for [SRT Host](https://github.com/Squirrelies/SRTHost/){:target="_blank" rel="noopener"}, [ProcessMemory](https://github.com/Squirrelies/ProcessMemory){:target="_blank" rel="noopener"}, various other SRTs and assistance.
 
+## External Libraries
+* [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net){:target="_blank" rel="noopener"}
+
 ## External Resources
 * [The calling thread must be STA, because many UI components require this](https://stackoverflow.com/questions/2329978/the-calling-thread-must-be-sta-because-many-ui-components-require-this/36006943#36006943){:target="_blank" rel="noopener"} - [Atik Sarker](https://stackoverflow.com/users/1077346/atik-sarker){:target="_blank" rel="noopener"}
 * [Move window when external application's window moves](https://stackoverflow.com/questions/48767318/move-window-when-external-applications-window-moves/48812831#48812831){:target="_blank" rel="noopener"} - [Jimi](https://stackoverflow.com/users/7444103/jimi){:target="_blank" rel="noopener"}
