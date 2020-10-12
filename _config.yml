@@ -17,6 +17,9 @@ markdown: kramdown
 github_username: kapdap
 rss: rss
 
+minima:
+ date_format: %c
+
 header_pages:
  - index.md
  - downloads.md
