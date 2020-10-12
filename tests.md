@@ -11,8 +11,6 @@ title: Tests
   ##{{ release.name }}
 
   {{ release.body }}
-
-  Download: {% assign asset = release.assets | first %}{{ asset.browser_download_url }}
   
   Release: {{ release.html_url }}
 
