@@ -11,8 +11,6 @@ title: Home
 
 ## Installation
 
-
-
 1. Download and extract the latest version of **[SRT Host](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}**.
 2. Download the latest **[{{ site.product_name }} Plugin Pack {{ site.github.latest_release.name }}]({% assign asset = site.github.latest_release.assets | first %}{{ asset.browser_download_url }})**.
 3. Extract the Plugin Pack contents to SRT Host **plugins** folder.
