@@ -8,4 +8,4 @@ layout: default
 {{ collection.relative_directory }}
 {{ collection.directory }}
 {{ collection.output }}
-% endfor %}
+{% endfor %}
