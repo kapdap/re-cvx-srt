@@ -3,4 +3,6 @@ layout: page
 title: Tests
 ---
 
-{{ site.github }}
+```json
+{{ site }}
+```
