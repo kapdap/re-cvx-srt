@@ -1,5 +1,6 @@
 ---
 title: RE CVX SRT UI WPF v0.9.0.0
 layout: post
+date: 2010-10-10 14:10:00 +1300
 ---
 * Initial release.
