@@ -16,7 +16,7 @@ RE CVX SRT is a speedrun tool for [{{ site.game_name }}](https://en.wikipedia.or
 
 ## Features
 
-<img align="right" width="456" height="463" src="{{ site.url }}/{{ site.github.repository_name }}/assets/srt_window_detailed.png" alt="{{ site.product_name }} main window">
+<img align="right" width="456" height="463" src="assets/srt_window_detailed.png" alt="{{ site.product_name }} main window">
 
 * Enemy health.
 * Player health.
