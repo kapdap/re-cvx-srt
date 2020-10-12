@@ -4,5 +4,5 @@ title: Tests
 ---
 
 ```json
-{{ site }}
+{{ site.github }}
 ```
