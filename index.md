@@ -7,7 +7,7 @@ title: Home
 
 {% if site.posts.size > 0 %}
 *Last Update: {% assign post = site.posts | first %} {{ post.date | date: "%F" }} ([Changelog](changelog.html))*.
-{%- endif -%}
+{% endif %}
 
 ## Installation
 
