@@ -1,4 +1,4 @@
 ---
 layout: default
 ---
-{% for collections in site.collections %} * {{ collections.name }} {% endfor %}
+{% for collection in site.collections %} * {{ collection }} {% endfor %}
