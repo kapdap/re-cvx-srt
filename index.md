@@ -3,7 +3,7 @@ layout: page
 title: Home
 ---
 
-RE CVX SRT is a speedrun tool for [{{ site.game_name }}](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica){:target="_blank" rel="noopener"} that works with [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"} and [RPCS3](https://rpcs3.net/){:target="_blank" rel="noopener"} emulators.
+{{ site.product_name }} is a speedrun tool for [{{ site.game_name }}](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica){:target="_blank" rel="noopener"} that works with [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"} and [RPCS3](https://rpcs3.net/){:target="_blank" rel="noopener"} emulators.
 
 *Last Update: 2020-10-11 ([Changelog](changelog.html))*.
 
