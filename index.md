@@ -44,14 +44,14 @@ The following emulators and game releases are currently supported.
 
 PlayStation 3 releases:
 
-  - [**NPJB00135**] [JP] BioHazard Code: Veronica Kanzenban
-  - [**NPUB30467**] [US] Resident Evil Code: Veronica X HD
-  - [**NPEB00553**] [EU] Resident Evil Code: Veronica X
+  - [**NPJB00135**] [JP] BioHazard: Code: Veronica Kanzenban
+  - [**NPUB30467**] [US] Resident Evil: Code: Veronica X HD
+  - [**NPEB00553**] [EU] Resident Evil: Code: Veronica X
 
 ### [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"}
 
 PlayStation 2 releases:
 
-  - [**SLPM-650.22**] [JP] BioHazard Code: Veronica Kanzenban 
-  - [**SLUS-201.84**] [US] Resident Evil Code: Veronica X
-  - [**SLES-503.06**] [EU] Resident Evil Code: Veronica X
+  - [**SLPM-650.22**] [JP] BioHazard: Code: Veronica Kanzenban 
+  - [**SLUS-201.84**] [US] Resident Evil: Code: Veronica X
+  - [**SLES-503.06**] [EU] Resident Evil: Code: Veronica X
