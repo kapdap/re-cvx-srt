@@ -10,7 +10,7 @@ RE CVX SRT is a speedrun tool for [Resident Evil: Code: Veronica](https://en.wik
 ## Installation
 
 2. Download and extract the latest version of **[SRT Host](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}**.
-3. Download the latest **[{{ site.product_name }} Plugin Pack {{ site.github.latest_release.name }}]({{ site.github.html_url }}/releases/download/{{ site.github.latest_release.tag_name }}/{{ site.github.name }}-plugin-pack_{{ site.github.latest_release.name }}.zip)**.
+3. Download the latest **[{{ site.product_name }} Plugin Pack {{ site.github.latest_release.name }}]({{ site.baseurl }}/releases/download/{{ site.github.latest_release.tag_name }}/{{ site.github.name }}-plugin-pack_{{ site.github.latest_release.name }}.zip)**.
 3. Extract the Plugin Pack contents to SRT Host **plugins** folder.
 5. Run **SRTHost64.exe** and start Resident Evil: Code: Veronica using a [supported emulator](#support).
 
