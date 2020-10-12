@@ -18,7 +18,7 @@ github_username: kapdap
 rss: rss
 
 minima:
-  date_format: "%F %T %z"
+  date_format: "%F %T"
 
 header_pages:
  - index.md
