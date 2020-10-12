@@ -7,11 +7,9 @@ title: Home
 
 
 
-*Last Update:
-{%- if site.posts.size > 0 -%}
+*Last Update: 
 {%- assign post = site.posts | first -%}
- {{ post.date | date: "%F" }} 
-{%- endif -%}
+{{ post.date | date: "%F" }} 
 ([Changelog](changelog.html))*.
 
 
