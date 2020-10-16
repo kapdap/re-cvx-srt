@@ -30,13 +30,13 @@ title: Home
 * Retires used.
 * Saves used.
 * F.A.S. used.
+* DirectX overlay.
 * Customizable interface.
 * JSON HTTP Server via **[SRTPluginUIJSON](https://github.com/Squirrelies/SRTPluginUIJSON/){:target="_blank" rel="noopener"}**.
 
 ### Planned
 
 * Rank/score tracking.
-* DirectX overlay.
 
 ## Support
 
