@@ -7,7 +7,7 @@ game_name: "Resident Evil: Code: Veronica"
 
 provider_version: 0.9.0.1
 interface_version: 0.9.0.0
-directx_version: 0.9.0.0
+directx_version: 0.9.0.1
 
 show_excerpts: true
 
