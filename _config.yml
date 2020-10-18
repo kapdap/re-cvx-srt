@@ -13,6 +13,8 @@ show_excerpts: true
 
 markdown: kramdown
 
+google_analytics: UA-15831812-2
+
 github_username: kapdap
 rss: rss
 
