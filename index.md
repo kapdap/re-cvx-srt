@@ -37,6 +37,7 @@ title: Home
 ### Planned
 
 * Rank/score tracking.
+* Support Dolphin (GameCube emulator).
 
 ## Support
 
