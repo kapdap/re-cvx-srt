@@ -21,5 +21,5 @@ title: Downloads
 
 ### Prerequisites:
 
-* [.NET Core v3.1 x64](https://dotnet.microsoft.com/download/dotnet-core/current/runtime){:target="_blank" rel="noopener"} or newer.
+* [.NET Core v5.0 x64](https://dotnet.microsoft.com/download/dotnet-core/current/runtime){:target="_blank" rel="noopener"} or newer.
 * [7-Zip](https://www.7-zip.org/){:target="_blank" rel="noopener"} or any file extraction software.
