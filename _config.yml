@@ -19,8 +19,6 @@ minima:
 
 header_pages:
  - index.md
- - downloads.md
- - screenshots.md
  - LICENSE.md
  - about.md
 
