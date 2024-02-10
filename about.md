@@ -2,17 +2,17 @@
 layout: page
 title: About
 ---
-RE CVX SRT Plugins created by [{{ site.author }}](https://github.com/kapdap/).
+{{ site.product_name }} Plugins created by [{{ site.author }}](https://github.com/kapdap/).
 
 ## Repositories
 
-* [RE CVX SRT Provider](https://github.com/kapdap/re-cvx-srt-provider/){:target="_blank" rel="noopener"}
-* [RE CVX SRT UI WPF](https://github.com/kapdap/re-cvx-srt-ui-wpf/){:target="_blank" rel="noopener"}
-* [RE CVX SRT UI DirectX Overlay](https://github.com/kapdap/re-cvx-srt-ui-directx-overlay/){:target="_blank" rel="noopener"}
+* [{{ site.product_name }} Provider](https://github.com/kapdap/re-cvx-srt-provider/){:target="_blank" rel="noopener"}
+* [{{ site.product_name }} UI WPF](https://github.com/kapdap/re-cvx-srt-ui-wpf/){:target="_blank" rel="noopener"}
+* [{{ site.product_name }} UI DirectX Overlay](https://github.com/kapdap/re-cvx-srt-ui-directx-overlay/){:target="_blank" rel="noopener"}
 
 ## Special Thanks
 
-* [Squirrelies](https://github.com/Squirrelies){:target="_blank" rel="noopener"} for [SRT Host](https://github.com/Squirrelies/SRTHost/){:target="_blank" rel="noopener"}, [ProcessMemory](https://github.com/Squirrelies/ProcessMemory){:target="_blank" rel="noopener"}, various other SRTs and assistance.
+* [Squirrelies](https://github.com/Squirrelies){:target="_blank" rel="noopener"} for [SRTPluginManager](https://github.com/SpeedrunTooling/SRTPluginManager/){:target="_blank" rel="noopener"}, [ProcessMemory](https://github.com/Squirrelies/ProcessMemory){:target="_blank" rel="noopener"}, various other SRTs and assistance.
 
 ## External Libraries
 * [GameOverlay.Net](https://github.com/michel-pi/GameOverlay.Net){:target="_blank" rel="noopener"}

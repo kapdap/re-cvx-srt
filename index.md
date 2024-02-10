@@ -2,19 +2,20 @@
 layout: page
 title: Home
 ---
-
-{{ site.product_name }} is a speedrun tool for [{{ site.game_name }}](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica){:target="_blank" rel="noopener"} that works with [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"} and [RPCS3](https://rpcs3.net/){:target="_blank" rel="noopener"} emulators.  
+{{ site.product_name }} is a speedrun tool for [{{ site.game_name }}](https://en.wikipedia.org/wiki/Resident_Evil_%E2%80%93_Code:_Veronica){:target="_blank" rel="noopener"} that works with [RPCS3](https://rpcs3.net/){:target="_blank" rel="noopener"}, [PCSX2](https://pcsx2.net/){:target="_blank" rel="noopener"} and [Dolphin](https://dolphin-emu.org/) emulators.
 
 {% if site.posts.size > 0 %}
-*Last Update: {% assign post = site.posts | first %} {{ post.date | date: "%F" }} ([Changelog](changelog.html))*.
+*Last Update: {% assign post = site.posts | first %} {{ post.date | date: "%F" }}*.
 {% endif %}
 
-## Installation
+## Quick Start
 
-1. Download and extract the latest version of **[SRT Host](https://www.neonblu.com/SRT/){:target="_blank" rel="noopener"}**.
-2. Download the latest **[{{ site.product_name }} Plugin Pack {{ site.github.latest_release.name }}]({% assign asset = site.github.latest_release.assets | first %}{{ asset.browser_download_url }})**.
-3. Extract the Plugin Pack contents to SRT Host **plugins** folder.
-4. Run **SRTHost64.exe** and start {{ site.game_name }} using a [supported emulator](#support).
+1. Download and run **[SRTPluginManager](https://github.com/SpeedrunTooling/SRTPluginManager/releases){:target="_blank" rel="noopener"}**.
+3. Select **User Interfaces** then **{{ site.game_name }} X (WPF)** and click **Install**.
+2. Select **SRT Host** then **{{ site.game_name }} X** and click **Install**.
+4. Click **Start SRT**.
+
+The SRT window will automatically display when a [supported emulator](#support) is detect and running ***{{ site.game_name }}***.
 
 ## Features
 
@@ -32,12 +33,6 @@ title: Home
 * F.A.S. used.
 * DirectX overlay.
 * Customizable interface.
-* JSON HTTP Server via **[SRTPluginUIJSON](https://github.com/Squirrelies/SRTPluginUIJSON/){:target="_blank" rel="noopener"}**.
-
-### Planned
-
-* Rank/score tracking.
-* Support Dolphin (GameCube emulator).
 
 ## Support
 
@@ -58,3 +53,11 @@ PlayStation 2 releases:
   - [**SLPM-650.22**] [JP] BioHazard: Code: Veronica Kanzenban 
   - [**SLUS-201.84**] [US] {{ site.game_name }} X
   - [**SLES-503.06**] [EU] {{ site.game_name }} X
+
+### [Dolphin](https://dolphin-emu.org/){:target="_blank" rel="noopener"}
+
+GameCube releases:
+
+  - [**GCDJ08**] [JP] BioHazard Code: Veronica Kanzenban 
+  - [**GCDE08**] [US] {{ site.game_name }} X
+  - [**GCDP08**] [EU] {{ site.game_name }} X
