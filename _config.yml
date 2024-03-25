@@ -9,7 +9,7 @@ show_excerpts: true
 
 markdown: kramdown
 
-google_analytics: UA-15831812-2
+google_analytics: G-FP2WBZN98G
 
 github_username: kapdap
 rss: rss
@@ -23,8 +23,10 @@ header_pages:
  - about.md
 
 theme: minima
+remote_theme: jekyll/minima
 
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
  - jekyll-sitemap
+ - jekyll-remote-theme
