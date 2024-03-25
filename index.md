@@ -15,7 +15,7 @@ title: Home
 2. Select **SRT Host** then **{{ site.game_name }} X** and click **Install**.
 4. Click **Start SRT**.
 
-The SRT window will automatically display when a [supported emulator](#support) is detect and running ***{{ site.game_name }}***.
+The SRT window will automatically display when a [supported emulator](#support) is detected and running ***{{ site.game_name }}***.
 
 ## Features
 
