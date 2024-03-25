@@ -22,7 +22,6 @@ header_pages:
  - LICENSE.md
  - about.md
 
-theme: minima
 remote_theme: jekyll/minima
 
 plugins:
